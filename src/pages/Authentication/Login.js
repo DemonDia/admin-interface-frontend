@@ -1,11 +1,12 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-
+import { loginPageAuthCheck } from "../../AuthCheck";
 function Login(props) {
+    const navigate = useNavigate();
+
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const navigate = useNavigate()
     const login = async () => {
         await axios
             .post(process.env.REACT_APP_BACKEND_API + "/api/users/login", {
@@ -17,18 +18,21 @@ function Login(props) {
                     alert(res.data.message);
                 } else {
                     console.log(res.data);
-                    localStorage.setItem("loginToken",res.data.token)
-                    navigate("/home")
+                    localStorage.setItem("loginToken", res.data.token);
+                    navigate("/home");
                 }
             });
     };
+    useEffect(() => {
+        loginPageAuthCheck(navigate, axios);
+    }, []);
     return (
         <div>
             <div className="card authForm">
                 <h1>Login</h1>
                 <label>Email:</label>
                 <input
-                    type="email\"
+                    type="email"
                     className="form-control"
                     placeholder="Enter email"
                     value={email}

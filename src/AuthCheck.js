@@ -27,7 +27,7 @@ const checkAuthStatus = async (successRoute, failRoute, navigate, axiosMgr) => {
 };
 
 const loginPageAuthCheck = async (navigate) => {
-    await checkAuthStatus("/home", "", navigate);
+    await checkAuthStatus("/home", "", navigate,axios);
 };
 
 const defaultAuthCheck = async (navigate, axios) => {
@@ -35,7 +35,7 @@ const defaultAuthCheck = async (navigate, axios) => {
 };
 
 const redirectAuthCheck = async (navigate) => {
-    await checkAuthStatus("/home", "/login", navigate);
+    await checkAuthStatus("/home", "/login", navigate,axios);
 };
 
 export { loginPageAuthCheck, defaultAuthCheck, redirectAuthCheck };
