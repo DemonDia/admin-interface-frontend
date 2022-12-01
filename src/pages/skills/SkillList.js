@@ -3,7 +3,9 @@ import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import { defaultAuthCheck } from "../../AuthCheck";
 import SkillRow from "../../components/skills/SkillRow";
+import CreateSkill from "../../components/skills/CreateSkill";
 function SkillList(props) {
+    const navigate = useNavigate()
     const [loading, isLoading] = useState(true);
     const [skills, setSkills] = useState([]);
     const currentToken = localStorage.getItem("loginToken");
@@ -24,6 +26,7 @@ function SkillList(props) {
             .catch((err) => {});
     };
     useEffect(() => {
+        defaultAuthCheck(navigate,axios);
         getSkills();
     }, []);
     return (
@@ -37,38 +40,42 @@ function SkillList(props) {
                     <li className="breadcrumb-item active" aria-current="page">
                         Skills
                     </li>
-                    {loading ? (
-                        <></>
-                    ) : (
-                        <div className = "tableContainer">
-                            <table className="table">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Skill Name</th>
-                                        <th scope="col">Skill Year</th>
-                                        <th scope="col" colSpan={2}>
-                                            Actions
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {skills ? (
-                                        <>
-                                            {skills.map((skill) => {
-                                                return (
-                                                    <SkillRow skill = {skill} refreshData = {getSkills} key = {skill._id}/>
-
-                                                );
-                                            })}
-                                        </>
-                                    ) : (
-                                        <></>
-                                    )}
-                                </tbody>
-                            </table>
-                        </div>
-                    )}
                 </ol>
+                <CreateSkill refreshData={getSkills}/>
+                {loading ? (
+                    <></>
+                ) : (
+                    <div className="tableContainer">
+                        <table className="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Skill Name</th>
+                                    <th scope="col">Skill Year</th>
+                                    <th scope="col" colSpan={2}>
+                                        Actions
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {skills ? (
+                                    <>
+                                        {skills.map((skill) => {
+                                            return (
+                                                <SkillRow
+                                                    skill={skill}
+                                                    refreshData={getSkills}
+                                                    key={skill._id}
+                                                />
+                                            );
+                                        })}
+                                    </>
+                                ) : (
+                                    <></>
+                                )}
+                            </tbody>
+                        </table>
+                    </div>
+                )}
             </nav>
         </div>
     );

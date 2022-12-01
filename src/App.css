@@ -48,3 +48,9 @@ label{
 .tableContainer table{
   background-color: white;
 }
+
+/* create button */
+.createBtn{
+  float: right;
+  margin:10px auto;
+}

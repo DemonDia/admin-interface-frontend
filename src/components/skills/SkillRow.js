@@ -34,6 +34,8 @@ function SkillRow(props) {
                 alert("Failed to save");
             });
     };
+
+    // =============delete=============
     const deleteSkill = async () => {
         await axios
             .delete(
