@@ -43,14 +43,18 @@ label{
   margin:10px auto;
   padding:10px;
   width:100%;
-  background:purple;
 }
 .tableContainer table{
   background-color: white;
+  border-radius: 10px;
 }
 
 /* create button */
 .createBtn{
-  float: right;
   margin:10px auto;
+}
+
+/* search & filter */
+.containers{
+  padding:10px;
 }
