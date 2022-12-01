@@ -11,6 +11,7 @@ const checkAuthStatus = async (successRoute, failRoute, navigate, axiosMgr) => {
             console.log(res);
             if(res.data.success){
                 localStorage.setItem("userName",res.data.username)
+                localStorage.setItem("userId",res.data.id)
             }
             if (successRoute != "" && res.data.success) {
                 navigate(successRoute);

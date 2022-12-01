@@ -4,7 +4,12 @@ import "./App.css";
 // ===========================authentication===========================
 import Login from "./pages/Authentication/Login";
 import Register from "./pages/Authentication/Register";
+
+// ===========================home===========================
 import Home from "./pages/Home";
+
+// ===========================skills===========================
+import SkillList from "./pages/skills/SkillList";
 function App() {
     return (
         <BrowserRouter>
@@ -16,6 +21,10 @@ function App() {
 
                     {/* ===========================home/main menu=========================== */}
                     <Route exact path="/home" element={<Home />} />
+
+                    {/* ===========================skills=========================== */}
+                    <Route exact path="/skills" element={<SkillList />} />
+                    
                 </Routes>
             </div>
         </BrowserRouter>
