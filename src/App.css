@@ -37,6 +37,18 @@ label{
   padding:10px;
 }
 
+/* main menu */
+.optionContainer{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.optionBox{
+  color:black;
+  height:30vh;
+  text-decoration: none;
+  justify-content: center;
+}
+
 
 /* table */
 .tableContainer{
