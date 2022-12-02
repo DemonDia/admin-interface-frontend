@@ -17,6 +17,7 @@ function SkillRow(props) {
                     id: props.skill._id,
                     name: skillName,
                     year,
+                    userId:localStorage.getItem("userId")
                 },
                 { headers: { Authorization: `Bearer ${currentToken}` } }
             )
@@ -39,13 +40,17 @@ function SkillRow(props) {
     const deleteSkill = async () => {
         await axios
             .delete(
-                process.env.REACT_APP_BACKEND_API + `/api/skills/${props.skill._id}`,
+                process.env.REACT_APP_BACKEND_API +
+                    `/api/skills/${props.skill._id}`,
                 {
-                    headers: { Authorization: `Bearer ${currentToken}` }
-                },
+                    headers: { Authorization: `Bearer ${currentToken}` },
+                    data: {
+                        userId: localStorage.getItem("userId"),
+                    },
+                }
             )
             .then((res) => {
-                console.log(res)
+                console.log(res);
                 if (res.data.success) {
                     alert("Successfully deleted");
                     props.refreshData();

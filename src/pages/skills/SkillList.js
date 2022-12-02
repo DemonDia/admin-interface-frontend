@@ -110,9 +110,8 @@ function SkillList(props) {
                                 <option value="2">Z-A</option>
                             </select>
                         </div>
-                        <div className="col" style={{ padding: "10px" }}>>
+                        <div className="col" style={{ padding: "10px" }}>
                         <CreateSkill refreshData={getSkills} />
-
                         </div>
                     </div>
                 </div>
