@@ -30,7 +30,8 @@ function ExperienceForm(props) {
     useEffect(() => {
         // ==========if its to update==========
         if (props.experience) {
-            setCompanyName(props.experience.company_name);
+            console.log(props.experience);
+            setCompanyName(props.experience.companyname);
             const [startingMonth, startingYear] =
                 props.experience.starting.split(" ");
             setStartYear(startingYear);
@@ -41,19 +42,13 @@ function ExperienceForm(props) {
             setEndYear(endingYear);
             setEndMonth(getMonthFromString(endingMonth));
 
-            setRoleName(props.experience.title);
+            setRoleName(props.experience.rolename);
             setDetails(props.experience.details);
             setCompanyURL(props.experience.website);
         }
     }, []);
 
     // ========================main functions========================
-    // ========== cancel ==========
-    const cancelChanges = () => {
-        // props.cancel(props.navigate)
-        alert("back");
-        navigate("/");
-    };
     // ========== add ==========
     const addNewExperience = async () => {
         const newExperience = {
@@ -67,7 +62,19 @@ function ExperienceForm(props) {
         await props.addItem(newExperience);
     };
     // ========== update ==========
-
+    const updateExperience = async () => {
+        const currentExperience = {
+            id: props.experience._id,
+            companyname: companyName,
+            starting: getMonthName(startMonth) + " " + startYear,
+            ending: getMonthName(endMonth) + " " + endYear,
+            details: details,
+            rolename: roleName,
+            comapanysite: companyURL,
+        };
+        console.log(currentExperience)
+        await props.updateItem(currentExperience);
+    };
     // ========================other functions========================
     const getMonthFromString = (mon) => {
         return new Date(Date.parse(mon + " 1, 2012")).getMonth() + 1;
@@ -239,14 +246,25 @@ function ExperienceForm(props) {
                     </table>
                 </div>
             </div>
-            <Link
-                className="btn btn-primary"
-                onClick={() => {
-                    addNewExperience();
-                }}
-            >
-                Add
-            </Link>
+            {!props.experience ? (
+                <Link
+                    className="btn btn-primary"
+                    onClick={() => {
+                        addNewExperience();
+                    }}
+                >
+                    Add
+                </Link>
+            ) : (
+                <Link
+                    className="btn btn-primary"
+                    onClick={() => {
+                        updateExperience();
+                    }}
+                >
+                    Save
+                </Link>
+            )}
         </div>
     );
 }

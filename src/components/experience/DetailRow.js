@@ -13,7 +13,7 @@ function DetailRow(props) {
         <tr>
             {!editing ? (
                 <>
-                    <td>{props.detail}</td>
+                    <td align="left">{props.detail}</td>
                     <td>
                         <Link
                             onClick={() => {
