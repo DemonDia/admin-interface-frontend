@@ -75,8 +75,8 @@ function SkillRow(props) {
             {!editing ? (
                 <>
                     <tr>
-                        <td>{skillName}</td>
-                        <td>{year}</td>
+                        <td align="left">{skillName}</td>
+                        <td align="left">{year}</td>
                         <td>
                             <Link
                                 onClick={() => {

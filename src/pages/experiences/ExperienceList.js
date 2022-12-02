@@ -171,17 +171,17 @@ function ExperienceList(props) {
                                                         <tr
                                                             key={experience._id}
                                                         >
-                                                            <td>
+                                                            <td align="left">
                                                                 {
                                                                     experience.rolename
                                                                 }
                                                             </td>
-                                                            <td>
+                                                            <td align="left">
                                                                 {
                                                                     experience.companyname
                                                                 }
                                                             </td>
-                                                            <td>
+                                                            <td align="left">
                                                                 {experience.starting}
                                                             </td>
                                                             <td>
