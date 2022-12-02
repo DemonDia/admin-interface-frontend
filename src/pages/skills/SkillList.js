@@ -45,6 +45,7 @@ function SkillList(props) {
             })
             .catch((err) => {});
     };
+
     useEffect(() => {
         defaultAuthCheck(navigate, axios);
         getSkills();
@@ -118,7 +119,7 @@ function SkillList(props) {
                 {loading ? (
                     <></>
                 ) : (
-                    <div className="tableContainer">
+                    <div className="tableContainer card">
                         <table className="table">
                             <thead>
                                 <tr>

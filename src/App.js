@@ -31,9 +31,9 @@ function App() {
                     <Route exact path="/skills" element={<SkillList />} />
 
                     {/* ===========================exerience=========================== */}
-                    <Route exact path="/experience" element={<AddExperience/>}/>
-                    <Route exact path="/experience/add" element={<ExperienceList/>}/>
-                    <Route exact path="/experience/edit/:experienceId" element={<EditExperience/>}/>
+                    <Route exact path="/experience" element={<ExperienceList/>}/>
+                    <Route exact path="/experience/add" element={<AddExperience/>}/>
+                    <Route exact path="/experience/:experienceId" element={<EditExperience/>}/>
                     
                 </Routes>
             </div>
