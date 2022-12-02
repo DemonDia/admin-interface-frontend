@@ -47,17 +47,14 @@ function ExperienceList(props) {
                 }
             )
             .then((res) => {
-                console.log(res);
                 if (res.data.success) {
                     alert("Successfully deleted");
                     getExperiences();
                 } else {
-                    console.log(res);
                     alert("Failed to delete");
                 }
             })
             .catch((err) => {
-                console.log(err);
                 alert("Failed to delete");
             });
     };

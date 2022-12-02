@@ -32,7 +32,6 @@ function CreateSkill(props) {
                 }
             })
             .catch((err) => {
-                console.log(err);
                 alert("Failed to add");
             });
     };

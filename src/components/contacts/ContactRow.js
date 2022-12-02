@@ -31,7 +31,6 @@ function ContactRow(props) {
                 }
             })
             .catch((err) => {
-                console.log(err);
                 alert("Failed to save");
             });
     };
@@ -50,18 +49,15 @@ function ContactRow(props) {
                 }
             )
             .then((res) => {
-                console.log(res);
                 if (res.data.success) {
                     alert("Successfully deleted");
                     props.refreshData();
                     setEditing(false);
                 } else {
-                    console.log(res);
                     alert("Failed to delete");
                 }
             })
             .catch((err) => {
-                console.log(err);
                 alert("Failed to delete");
             });
     };

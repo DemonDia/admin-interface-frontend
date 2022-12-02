@@ -30,7 +30,6 @@ function ExperienceForm(props) {
     useEffect(() => {
         // ==========if its to update==========
         if (props.experience) {
-            console.log(props.experience);
             setCompanyName(props.experience.companyname);
             const [startingMonth, startingYear] =
                 props.experience.starting.split(" ");
@@ -72,7 +71,6 @@ function ExperienceForm(props) {
             rolename: roleName,
             comapanysite: companyURL,
         };
-        console.log(currentExperience)
         await props.updateItem(currentExperience);
     };
     // ========================other functions========================

@@ -23,12 +23,10 @@ function AddExperience(props) {
                     alert("Successfully added");
                     navigate("/experience");
                 } else {
-                    console.log(res.data.message);
                     alert("Failed to add");
                 }
             })
             .catch((err) => {
-                console.log(err);
                 alert("Failed to add");
             });
     };

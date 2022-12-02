@@ -54,19 +54,16 @@ function ContactList(props) {
                 }
             )
             .then(async (res) => {
-                console.log(res)
                 if (res.data.success) {
                     await getContacts();
                     alert("Contact added!");
                     setContactName("");
                     setContactInfo("")
                 } else {
-                    console.log(res.data.message.message)
                     alert(res.data.message.message);
                 }
             })
             .catch((err) => {
-                console.log(err);
                 alert("Failed to add");
             });
     };

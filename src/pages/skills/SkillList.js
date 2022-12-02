@@ -38,7 +38,6 @@ function SkillList(props) {
                         }
                     });
                     setAvailableYears(allAvailableYears);
-                    console.log(res.data.data);
                     setSkills(fetchedSkills);
                     isLoading(false);
                 }

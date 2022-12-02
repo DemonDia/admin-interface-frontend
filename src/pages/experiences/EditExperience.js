@@ -24,12 +24,10 @@ function EditExperience(props) {
                     alert("Successfully saved");
                     navigate("/experience");
                 } else {
-                    console.log(res.data.message);
                     alert("Failed to save");
                 }
             })
             .catch((err) => {
-                console.log(err);
                 alert("Failed to save");
             });
     };
@@ -46,7 +44,6 @@ function EditExperience(props) {
                 }
             })
             .catch((err) => {
-                console.log(err);
             });
     };
 

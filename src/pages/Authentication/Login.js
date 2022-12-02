@@ -17,7 +17,6 @@ function Login(props) {
                 if (!res.data.success) {
                     alert(res.data.message);
                 } else {
-                    console.log(res.data);
                     localStorage.setItem("loginToken", res.data.token);
                     navigate("/home");
                 }
