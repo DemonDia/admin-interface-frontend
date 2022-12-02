@@ -10,8 +10,8 @@ function AddExperience(props) {
 
     const addUserExperience = async (experience) => {
         await axios
-            .put(
-                process.env.REACT_APP_BACKEND_API + "/api/experience/",
+            .post(
+                process.env.REACT_APP_BACKEND_API + "/api/experience/add",
                 {
                     ...experience,
                     userId,
@@ -20,20 +20,17 @@ function AddExperience(props) {
             )
             .then((res) => {
                 if (res.data.success) {
-                    alert("Successfully saved");
+                    alert("Successfully added");
                     navigate("/experience");
                 } else {
-                    alert("Failed to save");
+                    console.log(res.data.message)
+                    alert("Failed to add");
                 }
             })
             .catch((err) => {
                 console.log(err);
-                alert("Failed to save");
+                alert("Failed to add");
             });
-    };
-
-    const cancel = () => {
-        navigate("/experience");
     };
 
     useEffect(() => {
@@ -48,14 +45,17 @@ function AddExperience(props) {
                         <Link to="/home">Home</Link>
                     </li>
                     <li className="breadcrumb-item" aria-current="page">
-                        <Link to="/experience">Experiences</Link>
+                        <Link to="/experience">Experience (cancel)</Link>
                     </li>
                     <li className="breadcrumb-item active" aria-current="page">
                         Add new experience
                     </li>
                 </ol>
             </nav>
-            <ExperienceForm addItem={addUserExperience} cancel={cancel} />
+            <ExperienceForm
+                addItem={addUserExperience}
+                experience={null}
+            />
         </div>
     );
 }
