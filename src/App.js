@@ -15,6 +15,10 @@ import SkillList from "./pages/skills/SkillList";
 import AddExperience from "./pages/experiences/AddExperience";
 import ExperienceList from "./pages/experiences/ExperienceList";
 import EditExperience from "./pages/experiences/EditExperience";
+
+// ===========================contacts===========================
+import ContactList from "./pages/contacts/ContactList";
+
 function App() {
     return (
         <BrowserRouter>
@@ -35,6 +39,8 @@ function App() {
                     <Route exact path="/experience/add" element={<AddExperience/>}/>
                     <Route exact path="/experience/:experienceId" element={<EditExperience/>}/>
                     
+                    {/* ===========================contacts=========================== */}
+                    <Route exact path="/contacts" element={<ContactList/>}/>
                 </Routes>
             </div>
         </BrowserRouter>
