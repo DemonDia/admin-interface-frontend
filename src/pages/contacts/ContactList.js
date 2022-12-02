@@ -95,6 +95,7 @@ function ContactList(props) {
                             onChange={(e) => {
                                 setSearch(e.target.value);
                             }}
+                            value={search}
                             type="text"
                             className="form-control"
                             placeholder="Search by name"
@@ -174,11 +175,11 @@ function ContactList(props) {
                                         )
                                         .sort((a, b) =>
                                             sortBy == 1
-                                                ? a.contactname > b.contactname
+                                                ? a.contactname < b.contactname
                                                     ? 1
                                                     : -1
                                                 : sortBy == 2
-                                                ? b.contactname > a.contactname
+                                                ? b.contactname < a.contactname
                                                     ? 1
                                                     : -1
                                                 : -1
