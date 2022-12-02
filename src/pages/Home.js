@@ -12,51 +12,51 @@ function Home(props) {
         {
             page: "skills",
             pageName: "Manage Skills",
-            background: "red",
+            background: "#5465FF",
             color: "white",
         },
         {
             page: "experience",
             pageName: "Manage Experiences",
-            background: "orange",
+            background: "#4A5BF2",
             color: "white",
         },
         {
             page: "projects",
             pageName: "Manage Projects",
-            background: "red",
+            background: "#495AF3",
             color: "white",
         },
         {
             page: "contacts",
             pageName: "Manage Contacts",
-            background: "orange",
+            background: "#4859EE",
             color: "white",
         },
 
         {
             page: "resume",
             pageName: "Generate Resume",
-            background: "orange",
+            background: "#4657EF",
             color: "white",
         },
         {
             page: "user",
             pageName: "Profile",
-            background: "red",
+            background: "#3C4FF8",
             color: "white",
         },
         {
             page: "logout",
             pageName: "Logout",
-            background: "red",
+            background: "#374BFC",
             color: "white",
         },
     ];
 
     return (
         <div>
-            <h1>Welcome, what would you like to do today?</h1>
+            <h1>Home</h1>
             <nav aria-label="breadcrumb">
                 <ol className="breadcrumb">
                     <li className="breadcrumb-item active">

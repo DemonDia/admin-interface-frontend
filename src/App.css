@@ -1,12 +1,14 @@
 .App {
   text-align: center;
 }
-#root{
-    height:100vh;
-    margin:10px;
+
+#root {
+  height: 100vh;
+  margin: 10px;
 
 }
-label{
+
+label {
   text-align: left;
 }
 
@@ -24,7 +26,8 @@ label{
 .App-link {
   color: #61dafb;
 }
-label{
+
+label {
   align-self: flex-start;
   text-align: left;
 }
@@ -32,54 +35,76 @@ label{
 /* authentication */
 .authForm {
   width: 60vh;
-  margin: 10px auto;
+  margin: 20px auto;
   display: block;
-  padding:10px;
+  border-radius: 10px;
 }
 
+.authForm label {
+  float: left;
+}
+
+.authFormTop {
+  background: #5465FF;
+  color: white;
+  padding: 10px;
+  border-radius: 10px 10px 0 0;
+}
+
+.authFormContainer {
+  padding: 10px;
+
+}
+.authButton{
+  background-color: #0011A7;
+}
 /* main menu */
-.optionContainer{
+.optionContainer {
   margin-top: 10px;
   margin-bottom: 10px;
 }
-.optionBox{
-  color:black;
-  height:30vh;
+
+.optionBox {
+  color: black;
+  height: 30vh;
   text-decoration: none;
   justify-content: center;
 }
 
 
 /* table */
-.tableContainer{
-  margin:10px auto;
-  padding:10px;
-  width:100%;
+.tableContainer {
+  margin: 10px auto;
+  padding: 10px;
+  width: 100%;
 }
-.tableContainer table{
+
+.tableContainer table {
   background-color: white;
   border-radius: 10px;
 }
 
 /* create button */
-.createBtn{
-  margin:10px auto;
+.createBtn {
+  margin: 10px auto;
 }
 
 /* search & filter */
-.containers{
-  padding:10px;
+.containers {
+  padding: 10px;
 }
 
 
 /* experience */
-.formContainer{
+.formContainer {
   margin: 10px;
-  padding:15px;
+  padding: 15px;
 }
-.formContainer div div{
+
+.formContainer div div {
   padding: 10px;
 }
-.formContainer div div label{
+
+.formContainer div div label {
   float: left;
 }
