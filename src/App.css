@@ -55,7 +55,7 @@ label {
   padding: 10px;
 
 }
-.authButton{
+.authButton, .createBtn, .addBtn{
   background-color: #0011A7;
 }
 /* main menu */
@@ -97,7 +97,6 @@ label {
 
 /* experience */
 .formContainer {
-  margin: 10px;
   padding: 15px;
 }
 
@@ -107,4 +106,14 @@ label {
 
 .formContainer div div label {
   float: left;
+}
+
+/* breadcrumbContainer */
+.breadcrumbContainer{
+  width:100%;
+  padding:5px;
+  margin-bottom:10px;
+}
+.breadcrumbContainer ol{
+  margin:0px;
 }

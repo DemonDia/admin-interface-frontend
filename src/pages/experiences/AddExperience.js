@@ -23,7 +23,7 @@ function AddExperience(props) {
                     alert("Successfully added");
                     navigate("/experience");
                 } else {
-                    console.log(res.data.message)
+                    console.log(res.data.message);
                     alert("Failed to add");
                 }
             })
@@ -39,7 +39,7 @@ function AddExperience(props) {
     return (
         <div>
             <h1>Add Experience</h1>
-            <nav aria-label="breadcrumb">
+            <nav aria-label="breadcrumb" className="breadcrumbContainer card">
                 <ol className="breadcrumb">
                     <li className="breadcrumb-item">
                         <Link to="/home">Home</Link>
@@ -52,10 +52,7 @@ function AddExperience(props) {
                     </li>
                 </ol>
             </nav>
-            <ExperienceForm
-                addItem={addUserExperience}
-                experience={null}
-            />
+            <ExperienceForm addItem={addUserExperience} experience={null} />
         </div>
     );
 }

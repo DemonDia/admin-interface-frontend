@@ -214,7 +214,7 @@ function ExperienceForm(props) {
                                 </td>
                                 <td colSpan={2}>
                                     <Link
-                                        className="btn btn-primary"
+                                        className="btn btn-primary addBtn"
                                         type="button"
                                         onClick={() => {
                                             addDetailPoint();
@@ -248,7 +248,7 @@ function ExperienceForm(props) {
             </div>
             {!props.experience ? (
                 <Link
-                    className="btn btn-primary"
+                    className="btn btn-primary addBtn"
                     onClick={() => {
                         addNewExperience();
                     }}
@@ -257,7 +257,7 @@ function ExperienceForm(props) {
                 </Link>
             ) : (
                 <Link
-                    className="btn btn-primary"
+                    className="btn btn-primary addBtn"
                     onClick={() => {
                         updateExperience();
                     }}

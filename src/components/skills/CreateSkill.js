@@ -102,7 +102,7 @@ function CreateSkill(props) {
                             </button>
                             <button
                                 type="button"
-                                className="btn btn-primary"
+                                className="btn btn-primary addBtn"
                                 data-bs-dismiss="modal"
                                 onClick={async () => {
                                     await addSkill();

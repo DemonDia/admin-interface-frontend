@@ -53,7 +53,7 @@ function SkillList(props) {
     return (
         <div className="page">
             <h1>Skills</h1>
-            <nav aria-label="breadcrumb">
+            <nav aria-label="breadcrumb" className="breadcrumbContainer card">
                 <ol className="breadcrumb">
                     <li className="breadcrumb-item">
                         <Link to="/home">Home</Link>
@@ -62,120 +62,116 @@ function SkillList(props) {
                         Skills
                     </li>
                 </ol>
-                
-                <div className="card containers">
-                    <div className="row">
-                        <div className="col-md-4" style={{ padding: "10px" }}>
-                            <input
-                                onChange={(e) => {
-                                    setSearch(e.target.value);
-                                }}
-                                type="text"
-                                className="form-control"
-                                placeholder="Search by name"
-                            />
-                        </div>
-                        <div className="col-md-3" style={{ padding: "10px" }}>
-                            <select
-                                class="form-select"
-                                onChange={(e) => {
-                                    setFilterYear(e.target.value);
-                                }}
-                            >
-                                <option selected value="0">
-                                    Select Year
-                                </option>
+            </nav>
+            <div className="card containers">
+                <div className="row">
+                    <div className="col-md-4" style={{ padding: "10px" }}>
+                        <input
+                            onChange={(e) => {
+                                setSearch(e.target.value);
+                            }}
+                            type="text"
+                            className="form-control"
+                            placeholder="Search by name"
+                        />
+                    </div>
+                    <div className="col-md-3" style={{ padding: "10px" }}>
+                        <select
+                            class="form-select"
+                            onChange={(e) => {
+                                setFilterYear(e.target.value);
+                            }}
+                        >
+                            <option selected value="0">
+                                Select Year
+                            </option>
 
-                                {availableYears ? (
-                                    availableYears.reverse().map((year) => {
-                                        return (
-                                            <option value={year}>{year}</option>
-                                        );
-                                    })
-                                ) : (
-                                    <></>
-                                )}
-                            </select>
-                        </div>
-                        <div className="col-md-3" style={{ padding: "10px" }}>
-                            <select
-                                class="form-select"
-                                onChange={(e) => {
-                                    setSortBy(e.target.value);
-                                }}
-                            >
-                                <option selected value="0">
-                                    Sort by
-                                </option>
-                                <option value="1">A-Z</option>
-                                <option value="2">Z-A</option>
-                            </select>
-                        </div>
-                        <div className="col" style={{ padding: "10px" }}>
+                            {availableYears ? (
+                                availableYears.reverse().map((year) => {
+                                    return <option value={year}>{year}</option>;
+                                })
+                            ) : (
+                                <></>
+                            )}
+                        </select>
+                    </div>
+                    <div className="col-md-3" style={{ padding: "10px" }}>
+                        <select
+                            class="form-select"
+                            onChange={(e) => {
+                                setSortBy(e.target.value);
+                            }}
+                        >
+                            <option selected value="0">
+                                Sort by
+                            </option>
+                            <option value="1">A-Z</option>
+                            <option value="2">Z-A</option>
+                        </select>
+                    </div>
+                    <div className="col" style={{ padding: "10px" }}>
                         <CreateSkill refreshData={getSkills} />
-                        </div>
                     </div>
                 </div>
-                {loading ? (
-                    <></>
-                ) : (
-                    <div className="tableContainer card">
-                        <table className="table">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Skill Name</th>
-                                    <th scope="col">Skill Year</th>
-                                    <th scope="col" colSpan={2}>
-                                        Actions
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {skills ? (
-                                    <>
-                                        {skills
-                                            .filter(
-                                                (skill) =>
-                                                    (filterYear > 0
-                                                        ? skill.year ==
-                                                          filterYear
-                                                        : skill) &&
-                                                    skill.skillname
-                                                        .toLowerCase()
-                                                        .includes(
-                                                            search.toLowerCase()
-                                                        )
-                                            )
-                                            .sort((a, b) =>
-                                                sortBy == 1
-                                                    ? a.skillname > b.skillname
-                                                        ? 1
-                                                        : -1
-                                                    : sortBy == 2
-                                                    ? b.skillname > a.skillname
-                                                        ? 1
-                                                        : -1
+            </div>
+            {loading ? (
+                <></>
+            ) : (
+                <div className="tableContainer card">
+                    <table className="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Skill Name</th>
+                                <th scope="col">Skill Year</th>
+                                <th scope="col" colSpan={2}>
+                                    Actions
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {skills ? (
+                                <>
+                                    {skills
+                                        .filter(
+                                            (skill) =>
+                                                (filterYear > 0
+                                                    ? skill.year == filterYear
+                                                    : skill) &&
+                                                skill.skillname
+                                                    .toLowerCase()
+                                                    .includes(
+                                                        search.toLowerCase()
+                                                    )
+                                        )
+                                        .sort((a, b) =>
+                                            sortBy == 1
+                                                ? a.skillname > b.skillname
+                                                    ? 1
                                                     : -1
-                                            )
+                                                : sortBy == 2
+                                                ? b.skillname > a.skillname
+                                                    ? 1
+                                                    : -1
+                                                : -1
+                                        )
 
-                                            .map((skill) => {
-                                                return (
-                                                    <SkillRow
-                                                        skill={skill}
-                                                        refreshData={getSkills}
-                                                        key={skill._id}
-                                                    />
-                                                );
-                                            })}
-                                    </>
-                                ) : (
-                                    <></>
-                                )}
-                            </tbody>
-                        </table>
-                    </div>
-                )}
-            </nav>
+                                        .map((skill) => {
+                                            return (
+                                                <SkillRow
+                                                    skill={skill}
+                                                    refreshData={getSkills}
+                                                    key={skill._id}
+                                                />
+                                            );
+                                        })}
+                                </>
+                            ) : (
+                                <></>
+                            )}
+                        </tbody>
+                    </table>
+                </div>
+            )}
         </div>
     );
 }

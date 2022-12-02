@@ -56,8 +56,8 @@ function Home(props) {
 
     return (
         <div>
-            <h1>Home</h1>
-            <nav aria-label="breadcrumb">
+            <h1>Main Menu</h1>
+            <nav aria-label="breadcrumb" className = "breadcrumbContainer card">
                 <ol className="breadcrumb">
                     <li className="breadcrumb-item active">
                         Home 

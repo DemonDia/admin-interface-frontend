@@ -57,7 +57,7 @@ function EditExperience(props) {
     return (
         <div>
             <h1>Edit Experience</h1>
-            <nav aria-label="breadcrumb">
+            <nav aria-label="breadcrumb" className="breadcrumbContainer card">
                 <ol className="breadcrumb">
                     <li className="breadcrumb-item">
                         <Link to="/home">Home</Link>
@@ -70,8 +70,14 @@ function EditExperience(props) {
                     </li>
                 </ol>
             </nav>
-            {experience ?  <ExperienceForm experience={experience} updateItem={editUserExperience}/> : <></>}
-           
+            {experience ? (
+                <ExperienceForm
+                    experience={experience}
+                    updateItem={editUserExperience}
+                />
+            ) : (
+                <></>
+            )}
         </div>
     );
 }
