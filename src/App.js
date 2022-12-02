@@ -10,6 +10,11 @@ import Home from "./pages/Home";
 
 // ===========================skills===========================
 import SkillList from "./pages/skills/SkillList";
+
+// ===========================experience===========================
+import AddExperience from "./pages/experiences/AddExperience";
+import ExperienceList from "./pages/experiences/ExperienceList";
+import EditExperience from "./pages/experiences/EditExperience";
 function App() {
     return (
         <BrowserRouter>
@@ -24,6 +29,11 @@ function App() {
 
                     {/* ===========================skills=========================== */}
                     <Route exact path="/skills" element={<SkillList />} />
+
+                    {/* ===========================exerience=========================== */}
+                    <Route exact path="/experience" element={<AddExperience/>}/>
+                    <Route exact path="/experience/add" element={<ExperienceList/>}/>
+                    <Route exact path="/experience/edit/:experienceId" element={<EditExperience/>}/>
                     
                 </Routes>
             </div>
