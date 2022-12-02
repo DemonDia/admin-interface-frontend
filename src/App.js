@@ -19,6 +19,11 @@ import EditExperience from "./pages/experiences/EditExperience";
 // ===========================contacts===========================
 import ContactList from "./pages/contacts/ContactList";
 
+// ===========================project===========================
+import AddProject from "./pages/projects/AddProject";
+import EditProject from "./pages/projects/EditProject";
+import ProjectList from "./pages/projects/ProjectList";
+
 function App() {
     return (
         <BrowserRouter>
@@ -35,12 +40,41 @@ function App() {
                     <Route exact path="/skills" element={<SkillList />} />
 
                     {/* ===========================exerience=========================== */}
-                    <Route exact path="/experience" element={<ExperienceList/>}/>
-                    <Route exact path="/experience/add" element={<AddExperience/>}/>
-                    <Route exact path="/experience/:experienceId" element={<EditExperience/>}/>
-                    
+                    <Route
+                        exact
+                        path="/experience"
+                        element={<ExperienceList />}
+                    />
+                    <Route
+                        exact
+                        path="/experience/add"
+                        element={<AddExperience />}
+                    />
+                    <Route
+                        exact
+                        path="/experience/:experienceId"
+                        element={<EditExperience />}
+                    />
+
                     {/* ===========================contacts=========================== */}
-                    <Route exact path="/contacts" element={<ContactList/>}/>
+                    <Route exact path="/contacts" element={<ContactList />} />
+
+                    {/* ===========================projects=========================== */}
+                    <Route
+                        exact
+                        path="/projects"
+                        element={<ProjectList />}
+                    />
+                    <Route
+                        exact
+                        path="/projects/add"
+                        element={<AddProject />}
+                    />
+                    <Route
+                        exact
+                        path="/projects/:projectId"
+                        element={<EditProject />}
+                    />
                 </Routes>
             </div>
         </BrowserRouter>
