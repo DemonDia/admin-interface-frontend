@@ -56,7 +56,14 @@ function Home(props) {
 
     return (
         <div>
-            <h2>Welcome, what would you like to do today?</h2>
+            <h1>Welcome, what would you like to do today?</h1>
+            <nav aria-label="breadcrumb">
+                <ol className="breadcrumb">
+                    <li className="breadcrumb-item active">
+                        Home 
+                    </li>
+                </ol>
+            </nav>
             <div className="mainMenu">
                 <div class="row">
                     {menuOptions.map((menuOption) => {
