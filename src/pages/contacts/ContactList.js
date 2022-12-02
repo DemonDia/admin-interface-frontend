@@ -38,12 +38,43 @@ function ContactList(props) {
             .catch((err) => {});
     };
 
-    const addContact = async () => {};
+    const addContact = async () => {
+        await axios
+            .post(
+                process.env.REACT_APP_BACKEND_API + "/api/contacts/add",
+                {
+                    contactname: contactName,
+                    contactinfo:contactInfo,
+                    userId: localStorage.getItem("userId"),
+                },
+                {
+                    headers: {
+                        Authorization: `Bearer ${currentToken}`,
+                    },
+                }
+            )
+            .then(async (res) => {
+                console.log(res)
+                if (res.data.success) {
+                    await getContacts();
+                    alert("Contact added!");
+                    setContactName("");
+                    setContactInfo("")
+                } else {
+                    console.log(res.data.message.message)
+                    alert(res.data.message.message);
+                }
+            })
+            .catch((err) => {
+                console.log(err);
+                alert("Failed to add");
+            });
+    };
 
     useEffect(() => {
         defaultAuthCheck(navigate, axios);
         getContacts();
-    });
+    },[]);
     return (
         <div className="page">
             <h1>Contacts</h1>
@@ -107,7 +138,7 @@ function ContactList(props) {
                                         placeholder="Add contact name (eg: linkedin, etc)"
                                         value={contactName}
                                         onChange={(e) => {
-                                            setContactName(e);
+                                            setContactName(e.target.value);
                                         }}
                                     />
                                 </td>
@@ -117,7 +148,7 @@ function ContactList(props) {
                                         placeholder="Add contact info (eg: your email, etc)"
                                         value={contactInfo}
                                         onChange={(e) => {
-                                            setContactInfo(e);
+                                            setContactInfo(e.target.value);
                                         }}
                                     />
                                 </td>

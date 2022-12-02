@@ -19,8 +19,6 @@ function CreateSkill(props) {
                         Authorization: `Bearer ${currentToken}`,
                     },
                 }
-
-                // {  Authorization: `Bearer ${currentToken}` }
             )
             .then((res) => {
                 if (res.data.success) {
