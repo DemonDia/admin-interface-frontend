@@ -7,8 +7,9 @@ function ContactList(props) {
     const navigate = useNavigate();
     const [loading, isLoading] = useState(true);
     const [contacts, setContacts] = useState([]);
+    const [userId, setUserId] = useState("");
     const currentToken = localStorage.getItem("loginToken");
-    const userId = localStorage.getItem("userId");
+    // const userId = localStorage.getItem("userId");
 
     // contact name: eg: telegram, youtube, linkedin, etc
     const [contactName, setContactName] = useState("");
@@ -21,7 +22,16 @@ function ContactList(props) {
     // in A-Z or Z-A
     const [sortBy, setSortBy] = useState(0);
 
-    const getContacts = async () => {
+    const loadPage = async () => {
+        await defaultAuthCheck(navigate, axios).then(async (result) => {
+            if (result.data.success) {
+                await getContacts(result.data.id);
+                setUserId(result.data.id)
+            }
+        });
+    };
+
+    const getContacts = async (userId) => {
         axios
             .get(
                 process.env.REACT_APP_BACKEND_API + `/api/contacts/${userId}`,
@@ -43,9 +53,9 @@ function ContactList(props) {
             .post(
                 process.env.REACT_APP_BACKEND_API + "/api/contacts/add",
                 {
-                    contactName: contactName,
-                    contactInfo:contactInfo,
-                    userId: localStorage.getItem("userId"),
+                    contactName,
+                    contactInfo,
+                    userId
                 },
                 {
                     headers: {
@@ -55,10 +65,10 @@ function ContactList(props) {
             )
             .then(async (res) => {
                 if (res.data.success) {
-                    await getContacts();
+                    await getContacts(userId);
                     alert("Contact added!");
                     setContactName("");
-                    setContactInfo("")
+                    setContactInfo("");
                 } else {
                     alert(res.data.message.message);
                 }
@@ -69,9 +79,8 @@ function ContactList(props) {
     };
 
     useEffect(() => {
-        defaultAuthCheck(navigate, axios);
-        getContacts();
-    },[]);
+        loadPage();
+    }, []);
     return (
         <div className="page">
             <h1>Contacts</h1>

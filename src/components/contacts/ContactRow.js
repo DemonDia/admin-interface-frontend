@@ -16,15 +16,15 @@ function ContactRow(props) {
                 {
                     id: props.contact._id,
                     contactName: contactName,
-                    contact: contactInfo,
-                    userId: localStorage.getItem("userId"),
+                    contactInfo: contactInfo,
+                    userId:props.contact.userId
                 },
                 { headers: { Authorization: `Bearer ${currentToken}` } }
             )
             .then((res) => {
                 if (res.data.success) {
                     alert("Successfully saved");
-                    props.refreshData();
+                    props.refreshData(props.contact.userId);
                     setEditing(false);
                 } else {
                     alert("Failed to save");
@@ -44,14 +44,14 @@ function ContactRow(props) {
                 {
                     headers: { Authorization: `Bearer ${currentToken}` },
                     data: {
-                        userId: localStorage.getItem("userId"),
+                        userId: props.contact.userId,
                     },
                 }
             )
             .then((res) => {
                 if (res.data.success) {
                     alert("Successfully deleted");
-                    props.refreshData();
+                    props.refreshData(props.contact.userId);
                     setEditing(false);
                 } else {
                     alert("Failed to delete");
