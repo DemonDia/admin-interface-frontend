@@ -20,11 +20,28 @@ function ProjectForm(props) {
     // =======================descriptions=======================
     const [descriptionPoint, setDescriptionPoint] = useState("");
     // ========== add ==========
-    const addDescriptionPoint = () => {};
+    const addDescriptionPoint = () => {
+        if (description.includes(descriptionPoint)) {
+            alert("It exists");
+        } else if (descriptionPoint == "") {
+            alert("Description point cannot be empty");
+        } else {
+            description.push(descriptionPoint);
+            setDescription(description);
+            setDescriptionPoint("");
+        }
+    };
     // ========== update ==========
-    const updateDescriptionPoint = () => {};
+    const updateDescriptionPoint = (descriptionPoint, index) => {
+        description[index] = descriptionPoint;
+    };
     // ========== delete ==========
-    const deleteDescriptionPoint = () => {};
+    const deleteDescriptionPoint = (descriptionPoint) => {
+        const filteredDescriptionPoints = description.filter((currentDescriptionPoint) => {
+            return currentDescriptionPoint != descriptionPoint;
+        });
+        setDescription(filteredDescriptionPoints);
+    };
 
     // =======================tech stacks=======================
     const [techStack, setTechStack] = useState("");
@@ -120,14 +137,14 @@ function ProjectForm(props) {
                                         (descriptionPoint, index) => {
                                             return (
                                                 <DescriptionRow
-                                                    description={
+                                                    descriptionPoint={
                                                         descriptionPoint
                                                     }
                                                     index={index}
                                                     saveChanges={
                                                         updateDescriptionPoint
                                                     }
-                                                    deleteDetailPoint={
+                                                    deleteRow={
                                                         deleteDescriptionPoint
                                                     }
                                                 />
