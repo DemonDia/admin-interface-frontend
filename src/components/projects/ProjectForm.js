@@ -75,11 +75,36 @@ function ProjectForm(props) {
     const [projectLinkName, setProjectLinkName] = useState("");
     const [projectLinkUrl, setProjectLinkUrl] = useState("");
     // ========== add ==========
-    const addProjectLink = () => {};
+    const addProjectLink = () => {
+        if (projectLinkName == "" || projectLinkUrl == "") {
+            alert("Link name and URL cannot be empty");
+        } else {
+            projectLinks.push({
+                projectLinkName,
+                projectLinkUrl,
+            });
+            setProjectLinks(projectLinks);
+            setProjectLinkName("");
+            setProjectLinkUrl("");
+        }
+    };
     // ========== update ==========
-    const updateProjectLink = () => {};
+    const updateProjectLink = (projectLinkName, projectLinkURL, index) => {
+        if (projectLinkName != "" && projectLinkURL != "") {
+            projectLinks[index].projectLinkName = projectLinkName;
+            projectLinks[index].projectLinkUrl = projectLinkURL;
+        }
+    };
     // ========== delete ==========
-    const deleteProjectLink = () => {};
+    const deleteProjectLink = (currProjectLink) => {
+        const newProjectLinks = projectLinks.filter((projectLink) => {
+            return !(
+                projectLink.projectLinkName == currProjectLink.projectLinkName &&
+                projectLink.projectLinkUrl == currProjectLink.projectLinkUrl
+            );
+        });
+        setProjectLinks(newProjectLinks);
+    };
 
     // =======================components=======================
     const [componentName, setComponentName] = useState("");
@@ -222,9 +247,7 @@ function ProjectForm(props) {
                                                 techStack={techStack}
                                                 index={index}
                                                 saveChanges={updateTechStack}
-                                                deleteRow={
-                                                    deleteTechStack
-                                                }
+                                                deleteRow={deleteTechStack}
                                             />
                                         );
                                     })}
@@ -305,9 +328,7 @@ function ProjectForm(props) {
                                                 projectLink={projectLink}
                                                 index={index}
                                                 saveChanges={updateProjectLink}
-                                                deleteDetailPoint={
-                                                    deleteProjectLink
-                                                }
+                                                deleteRow={deleteProjectLink}
                                             />
                                         );
                                     })}
