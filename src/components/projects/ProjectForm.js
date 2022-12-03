@@ -9,10 +9,10 @@ function ProjectForm(props) {
     const [projectYear, setProjectYear] = useState(2022);
     useEffect(() => {
         if (props.project) {
-            setProjectName(props.project.projectname);
+            setProjectName(props.project.projectName);
             setProjectYear(props.project.year);
             setDescription(props.project.description);
-            setTechStacks(props.project.techstacks);
+            setTechStacks(props.project.techStacks);
             setProjectLinks(props.project.links);
             setProjectComponents(props.project.components);
         }
@@ -21,10 +21,10 @@ function ProjectForm(props) {
     // ========== add ==========
     const addProject = async () => {
         const newProject = {
-            projectname: projectName,
+            projectName: projectName,
             year: projectYear,
             description,
-            techstacks: techStacks,
+            techStacks: techStacks,
             links: projectLinks,
             components: projectComponents,
         };
@@ -34,10 +34,10 @@ function ProjectForm(props) {
     const updateProject = async () => {
         const currentProject = {
             id: props.project._id,
-            projectname: projectName,
+            projectName: projectName,
             year: projectYear,
             description,
-            techstacks: techStacks,
+            techStacks: techStacks,
             links: projectLinks,
             components: projectComponents,
         };

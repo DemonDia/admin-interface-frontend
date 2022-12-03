@@ -141,7 +141,7 @@ function ExperienceList(props) {
                                     <>
                                         {experiences
                                             .filter((experience) =>
-                                                experience.rolename
+                                                experience.roleName
                                                     .toLowerCase()
                                                     .includes(
                                                         search.toLowerCase()
@@ -149,11 +149,11 @@ function ExperienceList(props) {
                                             )
                                             .sort((a, b) =>
                                                 sortBy == 1
-                                                    ? a.rolename > b.rolename
+                                                    ? a.roleName > b.roleName
                                                         ? 1
                                                         : -1
                                                     : sortBy == 2
-                                                    ? b.rolename > a.rolename
+                                                    ? b.roleName > a.roleName
                                                         ? 1
                                                         : -1
                                                     : -1
@@ -164,12 +164,12 @@ function ExperienceList(props) {
                                                     <tr key={experience._id}>
                                                         <td align="left">
                                                             {
-                                                                experience.rolename
+                                                                experience.roleName
                                                             }
                                                         </td>
                                                         <td align="left">
                                                             {
-                                                                experience.companyname
+                                                                experience.companyName
                                                             }
                                                         </td>
                                                         <td align="left">

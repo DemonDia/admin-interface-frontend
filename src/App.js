@@ -24,6 +24,9 @@ import AddProject from "./pages/projects/AddProject";
 import EditProject from "./pages/projects/EditProject";
 import ProjectList from "./pages/projects/ProjectList";
 
+// ===========================users===========================
+import EmailVerificationPage from "./pages/Users/EmailVerificationPage";
+
 function App() {
     return (
         <BrowserRouter>
@@ -74,6 +77,13 @@ function App() {
                         exact
                         path="/projects/:projectId"
                         element={<EditProject />}
+                    />
+
+                    {/* ===========================users=========================== */}
+                    <Route
+                        exact
+                        path="/verify/:userId/:token"
+                        element={<EmailVerificationPage />}
                     />
                 </Routes>
             </div>

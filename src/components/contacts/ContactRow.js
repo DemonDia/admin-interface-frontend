@@ -4,7 +4,7 @@ import { PencilIcon, TrashIcon, SaveIcon, CancelIcon } from "../general/icons";
 import axios from "axios";
 function ContactRow(props) {
     const [editing, setEditing] = useState(false);
-    const [contactName, setContactName] = useState(props.contact.contactname);
+    const [contactName, setContactName] = useState(props.contact.contactName);
     const [contactInfo, setContactInfo] = useState(props.contact.contact);
     const currentToken = localStorage.getItem("loginToken");
 
@@ -15,7 +15,7 @@ function ContactRow(props) {
                 process.env.REACT_APP_BACKEND_API + "/api/contacts/",
                 {
                     id: props.contact._id,
-                    contactname: contactName,
+                    contactName: contactName,
                     contact: contactInfo,
                     userId: localStorage.getItem("userId"),
                 },
@@ -63,7 +63,7 @@ function ContactRow(props) {
     };
     const cancel = () => {
         setEditing(false);
-        setContactName(props.contact.contactname);
+        setContactName(props.contact.contactName);
         setContactInfo(props.contact.contact);
     };
     return (

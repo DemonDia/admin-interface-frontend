@@ -4,7 +4,7 @@ import { PencilIcon, TrashIcon, SaveIcon, CancelIcon } from "../general/icons";
 import axios from "axios";
 function SkillRow(props) {
     const [editing, setEditing] = useState(false);
-    const [skillName, setSkillName] = useState(props.skill.skillname);
+    const [skillName, setSkillName] = useState(props.skill.skillName);
     const [year, setYear] = useState(props.skill.year);
     const currentToken = localStorage.getItem("loginToken");
 
@@ -63,7 +63,7 @@ function SkillRow(props) {
     };
     const cancel = () => {
         setEditing(false);
-        setSkillName(props.skill.skillname);
+        setSkillName(props.skill.skillName);
         setYear(props.skill.year);
     };
     return (

@@ -14,6 +14,8 @@ function Register(props) {
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
 
+    const [phoneNumber, setPhoneNumber] = useState("");
+
     // ================helper functions================
     const validateEmail = (email) => {
         if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
@@ -29,7 +31,10 @@ function Register(props) {
         }
         // check if username >=6 char
         else if (userName.length < 6) {
-            alert("Username must be at least 6 characters");
+            alert("Name must be at least 6 characters");
+        }
+        else if(/^\d+$/.test(phoneNumber) == false){
+            alert("Invalid phone number");
         }
         // check if password >= 8 char
         else if (password.length < 8) {
@@ -45,6 +50,7 @@ function Register(props) {
                         email,
                         username: userName,
                         password,
+                        phoneNumber
                     }
                 )
                 .then((res) => {
@@ -72,16 +78,25 @@ function Register(props) {
                     <h1>Sign Up</h1>
                 </div>
                 <div className="authFormContainer">
-                    <label>Username:</label>
+                    <label>Name:*</label>
                     <input
                         className="form-control"
-                        placeholder="Enter username"
+                        placeholder="Enter your name"
                         value={userName}
                         onChange={(e) => {
                             setUserName(e.target.value);
                         }}
                     />
-                    <label>Email:</label>
+                    <label>Phone Number:*</label>
+                    <input
+                        className="form-control"
+                        placeholder="Enter phone number"
+                        value={phoneNumber}
+                        onChange={(e) => {
+                            setPhoneNumber(e.target.value);
+                        }}
+                    />
+                    <label>Email:*</label>
                     <input
                         type="email"
                         className="form-control"
@@ -91,7 +106,7 @@ function Register(props) {
                             setEmail(e.target.value);
                         }}
                     />
-                    <label>Password:</label>
+                    <label>Password:*</label>
                     <input
                         type="password"
                         className="form-control"
@@ -101,7 +116,7 @@ function Register(props) {
                             setPassword(e.target.value);
                         }}
                     />
-                    <label>Confirm password:</label>
+                    <label>Confirm password:*</label>
                     <input
                         type="password"
                         className="form-control"

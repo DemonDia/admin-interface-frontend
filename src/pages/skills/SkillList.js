@@ -136,7 +136,7 @@ function SkillList(props) {
                                                 (filterYear > 0
                                                     ? skill.year == filterYear
                                                     : skill) &&
-                                                skill.skillname
+                                                skill.skillName
                                                     .toLowerCase()
                                                     .includes(
                                                         search.toLowerCase()
@@ -144,11 +144,11 @@ function SkillList(props) {
                                         )
                                         .sort((a, b) =>
                                             sortBy == 1
-                                                ? a.skillname > b.skillname
+                                                ? a.skillName > b.skillName
                                                     ? 1
                                                     : -1
                                                 : sortBy == 2
-                                                ? b.skillname > a.skillname
+                                                ? b.skillName > a.skillName
                                                     ? 1
                                                     : -1
                                                 : -1

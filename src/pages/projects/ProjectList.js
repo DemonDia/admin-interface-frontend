@@ -170,7 +170,7 @@ function ProjectList(props) {
                                                 (filterYear > 0
                                                     ? project.year == filterYear
                                                     : project) &&
-                                                project.projectname
+                                                project.projectName
                                                     .toLowerCase()
                                                     .includes(
                                                         search.toLowerCase()
@@ -178,11 +178,11 @@ function ProjectList(props) {
                                         )
                                         .sort((a, b) =>
                                             sortBy == 1
-                                                ? a.projectname > b.projectname
+                                                ? a.projectName > b.projectName
                                                     ? 1
                                                     : -1
                                                 : sortBy == 2
-                                                ? b.projectname > a.projectname
+                                                ? b.projectName > a.projectName
                                                     ? 1
                                                     : -1
                                                 : -1
@@ -192,7 +192,7 @@ function ProjectList(props) {
                                             return (
                                                 <tr key={project._id}>
                                                     <td align="left">
-                                                        {project.projectname}
+                                                        {project.projectName}
                                                     </td>
                                                     <td align="left">
                                                         {project.year}

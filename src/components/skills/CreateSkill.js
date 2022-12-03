@@ -10,7 +10,7 @@ function CreateSkill(props) {
             .post(
                 process.env.REACT_APP_BACKEND_API + "/api/skills/add",
                 {
-                    skillname: skillName,
+                    skillName: skillName,
                     year,
                     userId: localStorage.getItem("userId"),
                 },

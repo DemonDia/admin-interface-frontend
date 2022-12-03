@@ -30,7 +30,7 @@ function ExperienceForm(props) {
     useEffect(() => {
         // ==========if its to update==========
         if (props.experience) {
-            setCompanyName(props.experience.companyname);
+            setCompanyName(props.experience.companyName);
             const [startingMonth, startingYear] =
                 props.experience.starting.split(" ");
             setStartYear(startingYear);
@@ -41,7 +41,7 @@ function ExperienceForm(props) {
             setEndYear(endingYear);
             setEndMonth(getMonthFromString(endingMonth));
 
-            setRoleName(props.experience.rolename);
+            setRoleName(props.experience.roleName);
             setDetails(props.experience.details);
             setCompanyURL(props.experience.website);
         }
@@ -51,12 +51,12 @@ function ExperienceForm(props) {
     // ========== add ==========
     const addNewExperience = async () => {
         const newExperience = {
-            companyname: companyName,
+            companyName: companyName,
             starting: getMonthName(startMonth) + " " + startYear,
             ending: getMonthName(endMonth) + " " + endYear,
             details: details,
-            rolename: roleName,
-            comapanysite: companyURL,
+            roleName: roleName,
+            comapanySite: companyURL,
         };
         await props.addItem(newExperience);
     };
@@ -64,12 +64,12 @@ function ExperienceForm(props) {
     const updateExperience = async () => {
         const currentExperience = {
             id: props.experience._id,
-            companyname: companyName,
+            companyName: companyName,
             starting: getMonthName(startMonth) + " " + startYear,
             ending: getMonthName(endMonth) + " " + endYear,
             details: details,
-            rolename: roleName,
-            comapanysite: companyURL,
+            roleName: roleName,
+            comapanySite: companyURL,
         };
         await props.updateItem(currentExperience);
     };

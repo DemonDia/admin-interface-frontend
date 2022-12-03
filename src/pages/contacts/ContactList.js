@@ -43,8 +43,8 @@ function ContactList(props) {
             .post(
                 process.env.REACT_APP_BACKEND_API + "/api/contacts/add",
                 {
-                    contactname: contactName,
-                    contactinfo:contactInfo,
+                    contactName: contactName,
+                    contactInfo:contactInfo,
                     userId: localStorage.getItem("userId"),
                 },
                 {
@@ -166,17 +166,17 @@ function ContactList(props) {
                                 <>
                                     {contacts
                                         .filter((contact) =>
-                                            contact.contactname
+                                            contact.contactName
                                                 .toLowerCase()
                                                 .includes(search.toLowerCase())
                                         )
                                         .sort((a, b) =>
                                             sortBy == 1
-                                                ? a.contactname < b.contactname
+                                                ? a.contactName < b.contactName
                                                     ? 1
                                                     : -1
                                                 : sortBy == 2
-                                                ? b.contactname < a.contactname
+                                                ? b.contactName < a.contactName
                                                     ? 1
                                                     : -1
                                                 : -1
