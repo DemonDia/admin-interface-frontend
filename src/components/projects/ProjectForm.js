@@ -241,7 +241,7 @@ function ProjectForm(props) {
                                         className="btn btn-primary addBtn"
                                         type="button"
                                         onClick={() => {
-                                            addTechStack();
+                                            addProjectLink();
                                         }}
                                     >
                                         Add
