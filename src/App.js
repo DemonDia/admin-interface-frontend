@@ -89,7 +89,7 @@ function App() {
                     />
                     <Route
                         exact
-                        path="/changepass/:userId/:token"
+                        path="/resetpass/:userId/:token"
                         element={<PasswordResetForm />}
                     />
                 </Routes>
