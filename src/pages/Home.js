@@ -57,18 +57,17 @@ function Home(props) {
     return (
         <div>
             <h1>Main Menu</h1>
-            <nav aria-label="breadcrumb" className = "breadcrumbContainer card">
+            <nav aria-label="breadcrumb" className="breadcrumbContainer card">
                 <ol className="breadcrumb">
-                    <li className="breadcrumb-item active">
-                        Home 
-                    </li>
+                    <li className="breadcrumb-item active">Home</li>
                 </ol>
             </nav>
             <div className="mainMenu">
                 <div className="row">
-                    {menuOptions.map((menuOption) => {
+                    {menuOptions.map((menuOption, index) => {
                         return (
                             <OptionContainer
+                                key={index}
                                 page={menuOption.page}
                                 pageName={menuOption.pageName}
                                 background={menuOption.background}
