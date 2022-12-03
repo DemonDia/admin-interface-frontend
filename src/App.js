@@ -32,6 +32,7 @@ import PasswordResetForm from "./pages/Users/PasswordResetForm";
 
 // ===========================redirect routes===========================
 import EmptyPage from "./pages/Redirect pages/EmptyPage";
+import ErrorPage from "./pages/Redirect pages/ErrorPage";
 function App() {
     return (
         <BrowserRouter>
@@ -105,6 +106,7 @@ function App() {
                         path="/"
                         element={<EmptyPage />}
                     />
+                    <Route exact path="*" element={<ErrorPage />} />
                 </Routes>
             </div>
         </BrowserRouter>
