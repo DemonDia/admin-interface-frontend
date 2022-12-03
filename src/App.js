@@ -29,6 +29,9 @@ import ProjectList from "./pages/projects/ProjectList";
 import EmailVerificationPage from "./pages/Users/EmailVerificationPage";
 import SendResetPasswordRequest from "./pages/Users/SendResetPasswordRequest";
 import PasswordResetForm from "./pages/Users/PasswordResetForm";
+
+// ===========================redirect routes===========================
+import EmptyPage from "./pages/Redirect pages/EmptyPage";
 function App() {
     return (
         <BrowserRouter>
@@ -94,6 +97,13 @@ function App() {
                         exact
                         path="/resetpass/:userId/:token"
                         element={<PasswordResetForm />}
+                    />
+
+                    {/* ===========================redirect routes=========================== */}
+                    <Route
+                        exact
+                        path="/"
+                        element={<EmptyPage />}
                     />
                 </Routes>
             </div>
