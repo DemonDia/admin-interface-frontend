@@ -107,7 +107,7 @@ function ContactList(props) {
                     </div>
                     <div className="col-md-3" style={{ padding: "10px" }}>
                         <select
-                            class="form-select"
+                            className="form-select"
                             onChange={(e) => {
                                 setSortBy(e.target.value);
                             }}
@@ -178,12 +178,12 @@ function ContactList(props) {
                                                 .includes(search.toLowerCase())
                                         )
                                         .sort((a, b) =>
-                                            sortBy === 1
-                                                ? a.contactName < b.contactName
+                                            sortBy == 1
+                                                ? a.contactName > b.contactName
                                                     ? 1
                                                     : -1
-                                                : sortBy === 2
-                                                ? b.contactName < a.contactName
+                                                : sortBy == 2
+                                                ? b.contactName > a.contactName
                                                     ? 1
                                                     : -1
                                                 : -1
