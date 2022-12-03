@@ -21,7 +21,7 @@ function ProjectLinkRow(props) {
                     <>
                         <td align="left">
                             {props.projectLink.projectLinkName}
-                        </td>{" "}
+                        </td>
                         <td rowSpan={2} style={{ verticalAlign: "middle" }}>
                             <Link
                                 onClick={() => {

@@ -9,7 +9,17 @@ function ProjectForm(props) {
     const [projectYear, setProjectYear] = useState(2022);
     // ========================main functions========================
     // ========== add ==========
-    const addProject = () => {};
+    const addProject = async () => {
+        const newProject = {
+            projectname: projectName,
+            year:projectYear,
+            description,
+            techstacks:techStacks,
+            links:projectLinks,
+            components:projectComponents
+        };
+        await props.addItem(newProject);
+    };
     // ========== update ==========
     const updateProject = () => {};
 
@@ -215,6 +225,7 @@ function ProjectForm(props) {
                                                         descriptionPoint
                                                     }
                                                     index={index}
+                                                    key={index}
                                                     saveChanges={
                                                         updateDescriptionPoint
                                                     }
@@ -276,6 +287,7 @@ function ProjectForm(props) {
                                             <TechStackRow
                                                 techStack={techStack}
                                                 index={index}
+                                                key={index}
                                                 saveChanges={updateTechStack}
                                                 deleteRow={deleteTechStack}
                                             />
@@ -339,7 +351,6 @@ function ProjectForm(props) {
                             </tr>
                             <tr>
                                 <td>
-                                    {" "}
                                     <input
                                         placeholder="Add project link URL"
                                         className="form-control"
@@ -357,6 +368,7 @@ function ProjectForm(props) {
                                             <ProjectLinkRow
                                                 projectLink={projectLink}
                                                 index={index}
+                                                key={index}
                                                 saveChanges={updateProjectLink}
                                                 deleteRow={deleteProjectLink}
                                             />
@@ -420,7 +432,6 @@ function ProjectForm(props) {
                             </tr>
                             <tr>
                                 <td>
-                                    {" "}
                                     <input
                                         placeholder="Add project component link"
                                         className="form-control"
