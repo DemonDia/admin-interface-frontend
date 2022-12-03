@@ -12,14 +12,14 @@ const checkAuthStatus = async (successRoute, failRoute, navigate, axiosMgr) => {
     //             localStorage.setItem("userName",res.data.username)
     //             localStorage.setItem("userId",res.data.id)
     //         }
-    //         if (successRoute != "" && res.data.success) {
+    //         if (successRoute !== "" && res.data.success) {
     //             navigate(successRoute);
-    //         } else if (failRoute != "" && !res.data.success) {
+    //         } else if (failRoute !== "" && !res.data.success) {
     //             navigate(failRoute);
     //         }
     //     })
     //     .catch((err) => {
-    //         if (failRoute != "") {
+    //         if (failRoute !== "") {
     //             navigate(failRoute);
     //         }
     //     });
@@ -30,13 +30,13 @@ const checkAuthStatus = async (successRoute, failRoute, navigate, axiosMgr) => {
         })
         .then()
         .catch((err) => {
-            if (failRoute != "") {
+            if (failRoute !== "") {
                 navigate(failRoute);
             }
         });
-    if (successRoute != "" && authStatus.data.success) {
+    if (successRoute !== "" && authStatus.data.success) {
         navigate(successRoute);
-    } else if (failRoute != "" && !authStatus.data.success) {
+    } else if (failRoute !== "" && !authStatus.data.success) {
         navigate(failRoute);
     }
     return authStatus;

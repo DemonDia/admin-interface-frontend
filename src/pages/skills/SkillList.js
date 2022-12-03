@@ -3,13 +3,15 @@ import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import { defaultAuthCheck } from "../../AuthCheck";
 import SkillRow from "../../components/skills/SkillRow";
-import CreateSkill from "../../components/skills/CreateSkill";
 function SkillList(props) {
     const navigate = useNavigate();
     const [loading, isLoading] = useState(true);
     const [skills, setSkills] = useState([]);
+    const [skillName, setSkillName] = useState("");
+    const [year, setYear] = useState(2022);
+
     const currentToken = localStorage.getItem("loginToken");
-    const userId = localStorage.getItem("userId");
+    const [userId, setUserId] = useState("");
 
     // search as you type
     const [search, setSearch] = useState("");
@@ -21,7 +23,7 @@ function SkillList(props) {
     // in A-Z or Z-A
     const [sortBy, setSortBy] = useState(0);
 
-    const getSkills = async () => {
+    const getSkills = async (userId) => {
         axios
             .get(process.env.REACT_APP_BACKEND_API + `/api/skills/${userId}`, {
                 headers: { Authorization: `Bearer ${currentToken}` },
@@ -45,9 +47,46 @@ function SkillList(props) {
             .catch((err) => {});
     };
 
+    const addSkill = async () => {
+        await axios
+            .post(
+                process.env.REACT_APP_BACKEND_API + "/api/skills/add",
+                {
+                    skillName,
+                    year,
+                    userId,
+                },
+                {
+                    headers: {
+                        Authorization: `Bearer ${currentToken}`,
+                    },
+                }
+            )
+            .then(async (res) => {
+                if (res.data.success) {
+                    await getSkills(userId);
+                    alert("Skill added!");
+                    setSkillName("");
+                    setYear(2022);
+                } else {
+                    alert(res.data.message);
+                }
+            })
+            .catch((err) => {
+                alert("Failed to add");
+            });
+    };
+
+    const loadPage = async () => {
+        await defaultAuthCheck(navigate, axios).then(async (result) => {
+            if (result.data.success) {
+                await getSkills(result.data.id);
+                setUserId(result.data.id);
+            }
+        });
+    };
     useEffect(() => {
-        defaultAuthCheck(navigate, axios);
-        getSkills();
+        loadPage();
     }, []);
     return (
         <div className="page">
@@ -108,9 +147,6 @@ function SkillList(props) {
                             <option value="2">Z-A</option>
                         </select>
                     </div>
-                    <div className="col" style={{ padding: "10px" }}>
-                        <CreateSkill refreshData={getSkills} />
-                    </div>
                 </div>
             </div>
             {loading ? (
@@ -128,6 +164,40 @@ function SkillList(props) {
                             </tr>
                         </thead>
                         <tbody>
+                            <tr>
+                                <td>
+                                    <input
+                                        className="form-control"
+                                        placeholder="Add skill name"
+                                        value={skillName}
+                                        onChange={(e) => {
+                                            setSkillName(e.target.value);
+                                        }}
+                                    />
+                                </td>
+                                <td>
+                                    <input
+                                        type= "number"
+                                        className="form-control"
+                                        placeholder="Add skill year"
+                                        value={year}
+                                        onChange={(e) => {
+                                            setYear(e.target.value);
+                                        }}
+                                    />
+                                </td>
+                                <td colSpan={2}>
+                                    <Link
+                                        type="button"
+                                        className="btn btn-primary addBtn"
+                                        onClick={() => {
+                                            addSkill();
+                                        }}
+                                    >
+                                        Add Skill
+                                    </Link>
+                                </td>
+                            </tr>
                             {skills ? (
                                 <>
                                     {skills

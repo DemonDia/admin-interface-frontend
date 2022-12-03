@@ -17,14 +17,14 @@ function SkillRow(props) {
                     id: props.skill._id,
                     name: skillName,
                     year,
-                    userId:localStorage.getItem("userId")
+                    userId:props.skill.userId
                 },
                 { headers: { Authorization: `Bearer ${currentToken}` } }
             )
             .then((res) => {
                 if (res.data.success) {
                     alert("Successfully saved");
-                    props.refreshData();
+                    props.refreshData(props.skill.userId);
                     setEditing(false);
                 } else {
                     alert("Failed to save");
@@ -44,14 +44,14 @@ function SkillRow(props) {
                 {
                     headers: { Authorization: `Bearer ${currentToken}` },
                     data: {
-                        userId: localStorage.getItem("userId"),
+                        userId: props.skill.userId
                     },
                 }
             )
             .then((res) => {
                 if (res.data.success) {
                     alert("Successfully deleted");
-                    props.refreshData();
+                    props.refreshData(props.skill.userId);
                     setEditing(false);
                 } else {
                     alert("Failed to delete");

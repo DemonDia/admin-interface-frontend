@@ -15,8 +15,8 @@ function ContactRow(props) {
                 process.env.REACT_APP_BACKEND_API + "/api/contacts/",
                 {
                     id: props.contact._id,
-                    contactName: contactName,
-                    contactInfo: contactInfo,
+                    contactName,
+                    contactInfo,
                     userId:props.contact.userId
                 },
                 { headers: { Authorization: `Bearer ${currentToken}` } }
