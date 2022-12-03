@@ -4,6 +4,7 @@ import "./App.css";
 // ===========================authentication===========================
 import Login from "./pages/Authentication/Login";
 import Register from "./pages/Authentication/Register";
+import LogoutPage from "./pages/Authentication/Logout";
 
 // ===========================home===========================
 import Home from "./pages/Home";
@@ -36,6 +37,8 @@ function App() {
                     {/* ===========================authentication=========================== */}
                     <Route exact path="/login" element={<Login />} />
                     <Route exact path="/register" element={<Register />} />
+                    <Route exact path="/logout" element={<LogoutPage />} />
+
 
                     {/* ===========================home/main menu=========================== */}
                     <Route exact path="/home" element={<Home />} />
