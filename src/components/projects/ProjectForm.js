@@ -7,21 +7,42 @@ import TechStackRow from "./TechStackRow";
 function ProjectForm(props) {
     const [projectName, setProjectName] = useState("");
     const [projectYear, setProjectYear] = useState(2022);
+    useEffect(() => {
+        if (props.project) {
+            setProjectName(props.project.projectname);
+            setProjectYear(props.project.year);
+            setDescription(props.project.description);
+            setTechStacks(props.project.techstacks);
+            setProjectLinks(props.project.links);
+            setProjectComponents(props.project.components);
+        }
+    },[]);
     // ========================main functions========================
     // ========== add ==========
     const addProject = async () => {
         const newProject = {
             projectname: projectName,
-            year:projectYear,
+            year: projectYear,
             description,
-            techstacks:techStacks,
-            links:projectLinks,
-            components:projectComponents
+            techstacks: techStacks,
+            links: projectLinks,
+            components: projectComponents,
         };
         await props.addItem(newProject);
     };
     // ========== update ==========
-    const updateProject = () => {};
+    const updateProject = async () => {
+        const currentProject = {
+            id: props.project._id,
+            projectname: projectName,
+            year: projectYear,
+            description,
+            techstacks: techStacks,
+            links: projectLinks,
+            components: projectComponents,
+        };
+        await props.updateItem(currentProject);
+    };
 
     // =======================descriptions=======================
     const [description, setDescription] = useState([]);
@@ -471,14 +492,25 @@ function ProjectForm(props) {
                     </table>
                 </div>
             </div>
-            <Link
-                className="btn btn-primary addBtn"
-                onClick={() => {
-                    addProject();
-                }}
-            >
-                Add
-            </Link>
+            {!props.project ? (
+                <Link
+                    className="btn btn-primary addBtn"
+                    onClick={() => {
+                        addProject();
+                    }}
+                >
+                    Add
+                </Link>
+            ) : (
+                <Link
+                    className="btn btn-primary addBtn"
+                    onClick={() => {
+                        updateProject();
+                    }}
+                >
+                    Save
+                </Link>
+            )}
         </div>
     );
 }
