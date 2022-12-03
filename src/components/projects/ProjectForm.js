@@ -37,20 +37,39 @@ function ProjectForm(props) {
     };
     // ========== delete ==========
     const deleteDescriptionPoint = (descriptionPoint) => {
-        const filteredDescriptionPoints = description.filter((currentDescriptionPoint) => {
-            return currentDescriptionPoint != descriptionPoint;
-        });
+        const filteredDescriptionPoints = description.filter(
+            (currentDescriptionPoint) => {
+                return currentDescriptionPoint != descriptionPoint;
+            }
+        );
         setDescription(filteredDescriptionPoints);
     };
 
     // =======================tech stacks=======================
     const [techStack, setTechStack] = useState("");
     // ========== add ==========
-    const addTechStack = () => {};
+    const addTechStack = () => {
+        if (techStacks.includes(techStack)) {
+            alert("It exists");
+        } else if (techStack == "") {
+            alert("Tech stack name cannot be empty");
+        } else {
+            techStacks.push(techStack);
+            setTechStacks(techStacks);
+            setTechStack("");
+        }
+    };
     // ========== update ==========
-    const updateTechStack = () => {};
+    const updateTechStack = (currentTechStack, index) => {
+        techStacks[index] = currentTechStack;
+    };
     // ========== delete ==========
-    const deleteTechStack = () => {};
+    const deleteTechStack = (currentTechStack) => {
+        const filteredTechStacks = techStacks.filter((techStack) => {
+            return techStack != currentTechStack;
+        });
+        setTechStacks(filteredTechStacks);
+    };
 
     // =======================project links=======================
     const [projectLinkName, setProjectLinkName] = useState("");
@@ -203,7 +222,7 @@ function ProjectForm(props) {
                                                 techStack={techStack}
                                                 index={index}
                                                 saveChanges={updateTechStack}
-                                                deleteDetailPoint={
+                                                deleteRow={
                                                     deleteTechStack
                                                 }
                                             />
