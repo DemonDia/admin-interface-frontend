@@ -7,10 +7,6 @@ import TechStackRow from "./TechStackRow";
 function ProjectForm(props) {
     const [projectName, setProjectName] = useState("");
     const [projectYear, setProjectYear] = useState(2022);
-    const [description, setDescription] = useState([]);
-    const [techStacks, setTechStacks] = useState([]);
-    const [projectLinks, setProjectLinks] = useState([]);
-    const [projectComponents, setProjectComponents] = useState([]);
     // ========================main functions========================
     // ========== add ==========
     const addProject = () => {};
@@ -18,6 +14,7 @@ function ProjectForm(props) {
     const updateProject = () => {};
 
     // =======================descriptions=======================
+    const [description, setDescription] = useState([]);
     const [descriptionPoint, setDescriptionPoint] = useState("");
     // ========== add ==========
     const addDescriptionPoint = () => {
@@ -46,6 +43,7 @@ function ProjectForm(props) {
     };
 
     // =======================tech stacks=======================
+    const [techStacks, setTechStacks] = useState([]);
     const [techStack, setTechStack] = useState("");
     // ========== add ==========
     const addTechStack = () => {
@@ -72,6 +70,7 @@ function ProjectForm(props) {
     };
 
     // =======================project links=======================
+    const [projectLinks, setProjectLinks] = useState([]);
     const [projectLinkName, setProjectLinkName] = useState("");
     const [projectLinkUrl, setProjectLinkUrl] = useState("");
     // ========== add ==========
@@ -99,7 +98,8 @@ function ProjectForm(props) {
     const deleteProjectLink = (currProjectLink) => {
         const newProjectLinks = projectLinks.filter((projectLink) => {
             return !(
-                projectLink.projectLinkName == currProjectLink.projectLinkName &&
+                projectLink.projectLinkName ==
+                    currProjectLink.projectLinkName &&
                 projectLink.projectLinkUrl == currProjectLink.projectLinkUrl
             );
         });
@@ -107,14 +107,44 @@ function ProjectForm(props) {
     };
 
     // =======================components=======================
+    const [projectComponents, setProjectComponents] = useState([]);
     const [componentName, setComponentName] = useState("");
     const [componentLink, setComponentLink] = useState("");
     // ========== add ==========
-    const addProjectComponent = () => {};
+    const addProjectComponent = () => {
+        if (componentName == "" || componentLink == "") {
+            alert("Component name and link cannot be empty");
+        } else {
+            projectComponents.push({
+                componentName,
+                componentLink,
+            });
+            setProjectComponents(projectComponents);
+            setComponentName("");
+            setComponentLink("");
+        }
+    };
     // ========== update ==========
-    const updateProjectComponent = () => {};
+    const updateProjectComponent = (componentName, componentLink, index) => {
+        if (componentName != "" && componentLink != "") {
+            projectComponents[index].componentName = componentName;
+            projectComponents[index].componentLink = componentLink;
+        }
+    };
     // ========== delete ==========
-    const deleteProjectComponent = () => {};
+    const deleteProjectComponent = (currProjectComponent) => {
+        const newProjectComponents = projectComponents.filter(
+            (projectComponent) => {
+                return !(
+                    projectComponent.componentName ==
+                        currProjectComponent.componentName &&
+                    projectComponent.componentLink ==
+                        currProjectComponent.componentLink
+                );
+            }
+        );
+        setProjectComponents(newProjectComponents);
+    };
 
     return (
         <div className="card formContainer">
@@ -406,15 +436,16 @@ function ProjectForm(props) {
                                     {projectComponents.map(
                                         (projectComponent, index) => {
                                             return (
-                                                <ProjectLinkRow
+                                                <ComponentRow
                                                     projectComponent={
                                                         projectComponent
                                                     }
+                                                    key={index}
                                                     index={index}
                                                     saveChanges={
                                                         updateProjectComponent
                                                     }
-                                                    deleteDetailPoint={
+                                                    deleteRow={
                                                         deleteProjectComponent
                                                     }
                                                 />
