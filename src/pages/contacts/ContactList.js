@@ -9,8 +9,6 @@ function ContactList(props) {
     const [contacts, setContacts] = useState([]);
     const [userId, setUserId] = useState("");
     const currentToken = localStorage.getItem("loginToken");
-    // const userId = localStorage.getItem("userId");
-
     // contact name: eg: telegram, youtube, linkedin, etc
     const [contactName, setContactName] = useState("");
     // contact info: eg: your email, ig handle, linkedin link etc
@@ -180,11 +178,11 @@ function ContactList(props) {
                                                 .includes(search.toLowerCase())
                                         )
                                         .sort((a, b) =>
-                                            sortBy == 1
+                                            sortBy === 1
                                                 ? a.contactName < b.contactName
                                                     ? 1
                                                     : -1
-                                                : sortBy == 2
+                                                : sortBy === 2
                                                 ? b.contactName < a.contactName
                                                     ? 1
                                                     : -1

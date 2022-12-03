@@ -65,7 +65,7 @@ function Home(props) {
                 </ol>
             </nav>
             <div className="mainMenu">
-                <div class="row">
+                <div className="row">
                     {menuOptions.map((menuOption) => {
                         return (
                             <OptionContainer

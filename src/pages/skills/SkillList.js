@@ -115,12 +115,12 @@ function SkillList(props) {
                     </div>
                     <div className="col-md-3" style={{ padding: "10px" }}>
                         <select
-                            class="form-select"
+                            className="form-select"
                             onChange={(e) => {
                                 setFilterYear(e.target.value);
                             }}
                         >
-                            <option selected value="0">
+                            <option selected value={0}>
                                 Select Year
                             </option>
 
@@ -135,16 +135,16 @@ function SkillList(props) {
                     </div>
                     <div className="col-md-3" style={{ padding: "10px" }}>
                         <select
-                            class="form-select"
+                            className="form-select"
                             onChange={(e) => {
                                 setSortBy(e.target.value);
                             }}
                         >
-                            <option selected value="0">
+                            <option selected value={0}>
                                 Sort by
                             </option>
-                            <option value="1">A-Z</option>
-                            <option value="2">Z-A</option>
+                            <option value={1}>A-Z</option>
+                            <option value={2}>Z-A</option>
                         </select>
                     </div>
                 </div>
@@ -204,7 +204,7 @@ function SkillList(props) {
                                         .filter(
                                             (skill) =>
                                                 (filterYear > 0
-                                                    ? skill.year == filterYear
+                                                    ? skill.year === filterYear
                                                     : skill) &&
                                                 skill.skillName
                                                     .toLowerCase()
