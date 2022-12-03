@@ -136,7 +136,15 @@ function ProjectList(props) {
                             <option value="2">Z-A</option>
                         </select>
                     </div>
-                    <div className="col" style={{ padding: "10px" }}></div>
+                    <div className="col" style={{ padding: "10px" }}>
+                        <Link
+                            type="button"
+                            className="btn btn-primary createBtn"
+                            to="/projects/add"
+                        >
+                             New Project
+                        </Link>
+                    </div>
                 </div>
             </div>
             {loading ? (
