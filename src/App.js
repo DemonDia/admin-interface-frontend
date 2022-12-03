@@ -26,7 +26,8 @@ import ProjectList from "./pages/projects/ProjectList";
 
 // ===========================users===========================
 import EmailVerificationPage from "./pages/Users/EmailVerificationPage";
-
+import SendResetPasswordRequest from "./pages/Users/SendResetPasswordRequest";
+import PasswordResetForm from "./pages/Users/PasswordResetForm";
 function App() {
     return (
         <BrowserRouter>
@@ -63,11 +64,7 @@ function App() {
                     <Route exact path="/contacts" element={<ContactList />} />
 
                     {/* ===========================projects=========================== */}
-                    <Route
-                        exact
-                        path="/projects"
-                        element={<ProjectList />}
-                    />
+                    <Route exact path="/projects" element={<ProjectList />} />
                     <Route
                         exact
                         path="/projects/add"
@@ -84,6 +81,16 @@ function App() {
                         exact
                         path="/verify/:userId/:token"
                         element={<EmailVerificationPage />}
+                    />
+                    <Route
+                        exact
+                        path="/forgotpass"
+                        element={<SendResetPasswordRequest />}
+                    />
+                    <Route
+                        exact
+                        path="/changepass/:userId/:token"
+                        element={<PasswordResetForm />}
                     />
                 </Routes>
             </div>

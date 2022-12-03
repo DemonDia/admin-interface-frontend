@@ -25,6 +25,7 @@ function Login(props) {
     useEffect(() => {
         loginPageAuthCheck(navigate, axios);
     }, []);
+
     return (
         <div>
             <div className="card authForm">
@@ -64,6 +65,9 @@ function Login(props) {
                     <br></br>
                     Don't have an account? Register{" "}
                     <Link to="/register">here</Link>.
+                    <br></br>
+                    Forgot your password? Reset it{" "}
+                    <Link to="/forgotpass">here</Link>.
                 </div>
             </div>
         </div>
