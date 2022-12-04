@@ -49,12 +49,12 @@ function EditExperience(props) {
         await defaultAuthCheck(navigate, axios).then(async (result) => {
             if (result.data.success) {
                 setUserId(result.data.id);
+                await getCurrentExperience();
             }
         });
     };
     useEffect(() => {
         loadPage();
-        getCurrentExperience();
     }, []);
     return (
         <div>

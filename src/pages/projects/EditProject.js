@@ -8,7 +8,7 @@ function EditProject(props) {
     const { projectId } = useParams();
     const navigate = useNavigate();
     const currentToken = localStorage.getItem("loginToken");
-    const userId = localStorage.getItem("userId");
+    const [userId, setUserId] = useState("");
     const [project, setProject] = useState(null);
     const editUserProject = async (project) => {
         await axios
@@ -25,7 +25,7 @@ function EditProject(props) {
                     alert("Successfully saved");
                     navigate("/projects");
                 } else {
-                    console.log(res.data.message)
+                    console.log(res.data.message);
                     alert("Failed to save");
                 }
             })
@@ -47,10 +47,17 @@ function EditProject(props) {
             })
             .catch((err) => {});
     };
+    const loadPage = async () => {
+        await defaultAuthCheck(navigate, axios).then(async (result) => {
+            if (result.data.success) {
+                setUserId(result.data.id);
+                await getCurrentProject();
+            }
+        });
+    };
 
     useEffect(() => {
-        defaultAuthCheck(navigate, axios);
-        getCurrentProject();
+        loadPage();
     }, []);
     return (
         <div>
@@ -69,10 +76,7 @@ function EditProject(props) {
                 </ol>
             </nav>
             {project ? (
-                <ProjectForm
-                    project={project}
-                    updateItem={editUserProject}
-                />
+                <ProjectForm project={project} updateItem={editUserProject} />
             ) : (
                 <></>
             )}

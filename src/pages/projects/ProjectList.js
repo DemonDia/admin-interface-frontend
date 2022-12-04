@@ -8,7 +8,7 @@ function ProjectList(props) {
     const [loading, isLoading] = useState(true);
     const [projects, setProjects] = useState([]);
     const currentToken = localStorage.getItem("loginToken");
-    const [userId,setUserId] = useState("")
+    const [userId, setUserId] = useState("");
 
     // search as you type
     const [search, setSearch] = useState("");
@@ -122,7 +122,11 @@ function ProjectList(props) {
 
                             {availableYears ? (
                                 availableYears.reverse().map((year) => {
-                                    return <option value={year}>{year}</option>;
+                                    return (
+                                        <option value={year}>
+                                            {year}
+                                        </option>
+                                    );
                                 })
                             ) : (
                                 <></>
@@ -149,7 +153,7 @@ function ProjectList(props) {
                             className="btn btn-primary createBtn"
                             to="/projects/add"
                         >
-                             New Project
+                            New Project
                         </Link>
                     </div>
                 </div>
