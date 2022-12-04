@@ -162,6 +162,16 @@ label {
 
 
 /* for verify email and forget password */
-.messageContainer {
+.messageContainer,.resumeContainer{
   padding: 20px;
+}
+
+/* resume content */
+.resumeContainer{
+  padding:5px;
+
+}
+.resumeContentContainer{
+  margin:20px;
+
 }

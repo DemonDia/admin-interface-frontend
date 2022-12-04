@@ -32,18 +32,22 @@ import SendResetPasswordRequest from "./pages/Users/SendResetPasswordRequest";
 import PasswordResetForm from "./pages/Users/PasswordResetForm";
 import UserProfilePage from "./pages/Users/UserProfilePage";
 
+// ===========================resume===========================
+import GenerateResume from "./pages/Resume/GenerateResume";
+
 // ===========================guides===========================
 import UserGuide from "./pages/Guides/UserGuide";
 
 // ===========================redirect routes===========================
 import EmptyPage from "./pages/Redirect pages/EmptyPage";
 import ErrorPage from "./pages/Redirect pages/ErrorPage";
-import Navbar from "./components/general/Navbar";
 
 // ===========================context===========================
 import { NavbarContext } from "./context/NavbarContext";
 
 // ===========================navbar===========================
+import Navbar from "./components/general/Navbar";
+
 function App() {
     const [loggedIn, setLoggedIn] = useState(false);
     useEffect(() => {
@@ -97,13 +101,6 @@ function App() {
                                 element={<EditExperience />}
                             />
 
-                            {/* ===========================contacts=========================== */}
-                            <Route
-                                exact
-                                path="/contacts"
-                                element={<ContactList />}
-                            />
-
                             {/* ===========================projects=========================== */}
                             <Route
                                 exact
@@ -119,6 +116,20 @@ function App() {
                                 exact
                                 path="/projects/:projectId"
                                 element={<EditProject />}
+                            />
+
+                            {/* ===========================contacts=========================== */}
+                            <Route
+                                exact
+                                path="/contacts"
+                                element={<ContactList />}
+                            />
+
+                            {/* ===========================resume=========================== */}
+                            <Route
+                                exact
+                                path="/resume"
+                                element={<GenerateResume />}
                             />
 
                             {/* ===========================users=========================== */}

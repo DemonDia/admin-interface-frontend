@@ -7,6 +7,7 @@ function Navbar(props) {
         { link: "/experience", linkName: "Experiences" },
         { link: "/contacts", linkName: "Contacts" },
         { link: "/projects", linkName: "Projects" },
+        { link: "/resume", linkName: "Resume" },
         { link: "/user", linkName: "Profile" },
         { link: "/guide", linkName: "Guide" },
         { link: "/logout", linkName: "Logout" },
