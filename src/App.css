@@ -33,7 +33,8 @@ label {
 }
 
 /* authentication */
-.authForm,.messageContainer {
+.authForm,
+.messageContainer {
   width: 60vh;
   margin: 20px auto;
   display: block;
@@ -138,7 +139,9 @@ label {
 }
 
 /* profile page */
-.profileContainer {}
+.profileContainer {
+  margin-top: 10px;
+}
 
 /* navbar */
 .mainNav {
@@ -146,11 +149,16 @@ label {
 }
 
 .navbar-brand,
-.nav-link{
+.nav-link {
   color: white;
 }
 
+.guideSteps li {
+  text-align: left;
+}
+
+
 /* for verify email and forget password */
-.messageContainer{
-  padding:20px;
+.messageContainer {
+  padding: 20px;
 }
