@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 function EmailVerificationPage(props) {
     const { userId, token } = useParams();
     const [verified, setVerified] = useState(false);
@@ -42,6 +43,7 @@ function EmailVerificationPage(props) {
                     ) : (
                         <h1>Failed to verify</h1>
                     )}
+                    <Link to ="/login" className="authButton btn btn-primary">Back to login</Link>
                 </>
             )}
         </div>
