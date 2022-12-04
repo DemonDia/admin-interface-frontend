@@ -3,6 +3,7 @@ import ExperienceForm from "../../components/experience/ExperienceForm";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { defaultAuthCheck } from "../../AuthCheck";
 import axios from "axios";
+import Loader from "../../components/general/Loader";
 function EditExperience(props) {
     const { experienceId } = useParams();
     const navigate = useNavigate();
@@ -78,7 +79,9 @@ function EditExperience(props) {
                     updateItem={editUserExperience}
                 />
             ) : (
-                <></>
+                <>
+                    <Loader />
+                </>
             )}
         </div>
     );

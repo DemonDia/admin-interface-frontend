@@ -3,7 +3,7 @@ import ProjectForm from "../../components/projects/ProjectForm";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { defaultAuthCheck } from "../../AuthCheck";
 import axios from "axios";
-
+import Loader from "../../components/general/Loader";
 function EditProject(props) {
     const { projectId } = useParams();
     const navigate = useNavigate();
@@ -78,7 +78,9 @@ function EditProject(props) {
             {project ? (
                 <ProjectForm project={project} updateItem={editUserProject} />
             ) : (
-                <></>
+                <>
+                    <Loader />
+                </>
             )}
         </div>
     );
