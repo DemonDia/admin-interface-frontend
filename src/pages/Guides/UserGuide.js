@@ -1,7 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { CopyToClipbaord } from "../../components/general/icons";
+import { useNavigate } from "react-router-dom";
+import { defaultAuthCheck } from "../../AuthCheck";
 function UserGuide(props) {
+    const navigate = useNavigate();
+    const loadPage = async () => {
+        await defaultAuthCheck(navigate);
+    };
+
+    useEffect(() => {
+        loadPage();
+    }, []);
     return (
         <div className="page">
             <h1>User Guides</h1>
