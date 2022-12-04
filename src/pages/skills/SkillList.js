@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import { defaultAuthCheck } from "../../AuthCheck";
 import SkillRow from "../../components/skills/SkillRow";
+import Loader from "../../components/general/Loader";
 function SkillList(props) {
     const navigate = useNavigate();
     const [loading, isLoading] = useState(true);
@@ -150,7 +151,9 @@ function SkillList(props) {
                 </div>
             </div>
             {loading ? (
-                <></>
+                <>
+                    <Loader />
+                </>
             ) : (
                 <div className="tableContainer card">
                     <table className="table">
@@ -177,7 +180,7 @@ function SkillList(props) {
                                 </td>
                                 <td>
                                     <input
-                                        type= "number"
+                                        type="number"
                                         className="form-control"
                                         placeholder="Add skill year"
                                         value={year}

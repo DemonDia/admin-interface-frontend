@@ -55,9 +55,13 @@ label {
   padding: 10px;
 
 }
-.authButton, .createBtn, .addBtn{
+
+.authButton,
+.createBtn,
+.addBtn {
   background-color: #0011A7;
 }
+
 /* main menu */
 .optionContainer {
   margin-top: 10px;
@@ -109,11 +113,19 @@ label {
 }
 
 /* breadcrumbContainer */
-.breadcrumbContainer{
-  width:100%;
-  padding:5px;
-  margin-bottom:10px;
+.breadcrumbContainer {
+  width: 100%;
+  padding: 5px;
+  margin-bottom: 10px;
 }
-.breadcrumbContainer ol{
-  margin:0px;
+
+.breadcrumbContainer ol {
+  margin: 0px;
+}
+
+/* loader */
+.loaderContainer {
+  min-height: 20vh;
+  justify-content: center;
+  align-items: center;
 }
