@@ -4,6 +4,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { defaultAuthCheck } from "../../AuthCheck";
 import SkillRow from "../../components/skills/SkillRow";
 import Loader from "../../components/general/Loader";
+import EmptyContentRow from "../../components/general/tables/EmptyContentRow";
 function SkillList(props) {
     const navigate = useNavigate();
     const [loading, isLoading] = useState(true);
@@ -201,7 +202,7 @@ function SkillList(props) {
                                     </Link>
                                 </td>
                             </tr>
-                            {skills ? (
+                            {skills.length >0 ? (
                                 <>
                                     {skills
                                         .filter(
@@ -238,7 +239,12 @@ function SkillList(props) {
                                         })}
                                 </>
                             ) : (
-                                <></>
+                                <>
+                                    <EmptyContentRow
+                                        colSpan={4}
+                                        item={"skills"}
+                                    />
+                                </>
                             )}
                         </tbody>
                     </table>
