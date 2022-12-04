@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useContext } from "react";
 import ExperienceForm from "../../components/experience/ExperienceForm";
 import { Link, useNavigate } from "react-router-dom";
 import { defaultAuthCheck } from "../../AuthCheck";
+import { NavbarContext } from "../../context/NavbarContext";
 import axios from "axios";
 function AddExperience(props) {
+    const { setLoggedIn,loggedIn } = useContext(NavbarContext);
     const navigate = useNavigate();
     const currentToken = localStorage.getItem("loginToken");
     const [userId,setUserId] = useState("")
@@ -33,6 +35,7 @@ function AddExperience(props) {
     const loadPage = async () => {
         await defaultAuthCheck(navigate).then(async (result) => {
             if (result.data.success) {
+                setLoggedIn(true)
                 setUserId(result.data.id);
             }
         });
