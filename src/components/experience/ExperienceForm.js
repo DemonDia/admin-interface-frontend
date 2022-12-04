@@ -11,7 +11,6 @@ function ExperienceForm(props) {
     const [companyURL, setCompanyURL] = useState("");
     const [endMonth, setEndMonth] = useState(11);
     const [endYear, setEndYear] = useState(2022);
-    const navigate = useNavigate();
 
     const monthsDict = [
         "Jan",
@@ -43,7 +42,7 @@ function ExperienceForm(props) {
 
             setRoleName(props.experience.roleName);
             setDetails(props.experience.details);
-            setCompanyURL(props.experience.website);
+            setCompanyURL(props.experience.companySite);
         }
     }, []);
 
@@ -56,7 +55,7 @@ function ExperienceForm(props) {
             ending: getMonthName(endMonth) + " " + endYear,
             details: details,
             roleName: roleName,
-            comapanySite: companyURL,
+            companySite: companyURL,
         };
         await props.addItem(newExperience);
     };
@@ -69,7 +68,7 @@ function ExperienceForm(props) {
             ending: getMonthName(endMonth) + " " + endYear,
             details: details,
             roleName: roleName,
-            comapanySite: companyURL,
+            companySite: companyURL,
         };
         await props.updateItem(currentExperience);
     };
