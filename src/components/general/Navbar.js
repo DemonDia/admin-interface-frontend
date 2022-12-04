@@ -16,19 +16,29 @@ function Navbar(props) {
         { link: "/register", linkName: "Register" },
     ];
     return (
-        <nav class="navbar navbar-expand-lg bg-light fixed-top">
-            <div class="container-fluid">
-                <Link class="navbar-brand" to="/">
+        <nav className="navbar navbar-expand-lg bg-light fixed-top">
+            <div className="container-fluid">
+                <Link className="navbar-brand" to="/">
                     Admin.io
                 </Link>
-
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
+                <button
+                    className="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarNav"
+                    aria-controls="navbarNav"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+                >
+                    <span className="navbar-toggler-icon"></span>
+                </button>
+                <div className="collapse navbar-collapse" id="navbarNav">
+                    <ul className="navbar-nav">
                         {props.loggedIn ? (
                             <>
                                 {loggedInLinks.map((loginLink, index) => {
                                     return (
-                                        <li class="nav-item" key={index}>
+                                        <li className="nav-item" key={index}>
                                             <Link
                                                 className="nav-link"
                                                 to={loginLink.link}
@@ -40,18 +50,20 @@ function Navbar(props) {
                                 })}
                             </>
                         ) : (
-                            <>{notLoggedInLinks.map((loginLink, index) => {
-                                return (
-                                    <li class="nav-item" key={index}>
-                                        <Link
-                                            className="nav-link"
-                                            to={loginLink.link}
-                                        >
-                                            {loginLink.linkName}
-                                        </Link>
-                                    </li>
-                                );
-                            })}</>
+                            <>
+                                {loggedInLinks.map((loginLink, index) => {
+                                    return (
+                                        <li className="nav-item" key={index}>
+                                            <Link
+                                                className="nav-link"
+                                                to={loginLink.link}
+                                            >
+                                                {loginLink.linkName}
+                                            </Link>
+                                        </li>
+                                    );
+                                })}
+                            </>
                         )}
                     </ul>
                 </div>

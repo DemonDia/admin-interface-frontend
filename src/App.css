@@ -38,6 +38,7 @@ label {
   margin: 20px auto;
   display: block;
   border-radius: 10px;
+  top: 25vh;
 }
 
 .authForm label {
@@ -137,5 +138,5 @@ label {
 
 /* profile page */
 .profileContainer{
-  
+
 }
