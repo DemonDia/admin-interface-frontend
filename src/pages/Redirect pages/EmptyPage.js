@@ -9,8 +9,9 @@ function EmptyPage(props) {
     
     return (
         <div>
-            <h1>Redirecting</h1>
-            
+            <div className="messageContainer card">
+                <h1>Redirecting ...</h1>
+            </div>
         </div>
     );
 }
