@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 
@@ -34,78 +35,99 @@ import UserProfilePage from "./pages/Users/UserProfilePage";
 // ===========================redirect routes===========================
 import EmptyPage from "./pages/Redirect pages/EmptyPage";
 import ErrorPage from "./pages/Redirect pages/ErrorPage";
+import Navbar from "./components/general/Navbar";
 
+// ===========================context===========================
+import { NavbarContext } from "./context/NavbarContext";
+
+// ===========================navbar===========================
 function App() {
+    const [loggedIn,isLoggedIn] = useState(false)
     return (
         <BrowserRouter>
             <div className="App">
-                <Routes>
-                    {/* ===========================authentication=========================== */}
-                    <Route exact path="/login" element={<Login />} />
-                    <Route exact path="/register" element={<Register />} />
-                    <Route exact path="/logout" element={<LogoutPage />} />
+                <NavbarContext.Provider value={{ loggedIn,isLoggedIn }}>
+                    <Navbar />
+                    <Routes>
+                        {/* ===========================authentication=========================== */}
+                        <Route exact path="/login" element={<Login />} />
+                        <Route exact path="/register" element={<Register />} />
+                        <Route exact path="/logout" element={<LogoutPage />} />
 
-                    {/* ===========================home/main menu=========================== */}
-                    <Route exact path="/home" element={<Home />} />
+                        {/* ===========================home/main menu=========================== */}
+                        <Route exact path="/home" element={<Home />} />
 
-                    {/* ===========================skills=========================== */}
-                    <Route exact path="/skills" element={<SkillList />} />
+                        {/* ===========================skills=========================== */}
+                        <Route exact path="/skills" element={<SkillList />} />
 
-                    {/* ===========================exerience=========================== */}
-                    <Route
-                        exact
-                        path="/experience"
-                        element={<ExperienceList />}
-                    />
-                    <Route
-                        exact
-                        path="/experience/add"
-                        element={<AddExperience />}
-                    />
-                    <Route
-                        exact
-                        path="/experience/:experienceId"
-                        element={<EditExperience />}
-                    />
+                        {/* ===========================exerience=========================== */}
+                        <Route
+                            exact
+                            path="/experience"
+                            element={<ExperienceList />}
+                        />
+                        <Route
+                            exact
+                            path="/experience/add"
+                            element={<AddExperience />}
+                        />
+                        <Route
+                            exact
+                            path="/experience/:experienceId"
+                            element={<EditExperience />}
+                        />
 
-                    {/* ===========================contacts=========================== */}
-                    <Route exact path="/contacts" element={<ContactList />} />
+                        {/* ===========================contacts=========================== */}
+                        <Route
+                            exact
+                            path="/contacts"
+                            element={<ContactList />}
+                        />
 
-                    {/* ===========================projects=========================== */}
-                    <Route exact path="/projects" element={<ProjectList />} />
-                    <Route
-                        exact
-                        path="/projects/add"
-                        element={<AddProject />}
-                    />
-                    <Route
-                        exact
-                        path="/projects/:projectId"
-                        element={<EditProject />}
-                    />
+                        {/* ===========================projects=========================== */}
+                        <Route
+                            exact
+                            path="/projects"
+                            element={<ProjectList />}
+                        />
+                        <Route
+                            exact
+                            path="/projects/add"
+                            element={<AddProject />}
+                        />
+                        <Route
+                            exact
+                            path="/projects/:projectId"
+                            element={<EditProject />}
+                        />
 
-                    {/* ===========================users=========================== */}
-                    <Route
-                        exact
-                        path="/verify/:userId/:token"
-                        element={<EmailVerificationPage />}
-                    />
-                    <Route
-                        exact
-                        path="/forgotpass"
-                        element={<SendResetPasswordRequest />}
-                    />
-                    <Route
-                        exact
-                        path="/resetpass/:userId/:token"
-                        element={<PasswordResetForm />}
-                    />
-                    <Route exact path="/user" element={<UserProfilePage />} />
+                        {/* ===========================users=========================== */}
+                        <Route
+                            exact
+                            path="/verify/:userId/:token"
+                            element={<EmailVerificationPage />}
+                        />
+                        <Route
+                            exact
+                            path="/forgotpass"
+                            element={<SendResetPasswordRequest />}
+                        />
+                        <Route
+                            exact
+                            path="/resetpass/:userId/:token"
+                            element={<PasswordResetForm />}
+                        />
+                        <Route
+                            exact
+                            path="/user"
+                            element={<UserProfilePage />}
+                        />
 
-                    {/* ===========================redirect routes=========================== */}
-                    <Route exact path="/" element={<EmptyPage />} />
-                    <Route exact path="*" element={<ErrorPage />} />
-                </Routes>
+                        {/* ===========================redirect routes=========================== */}
+                        <Route exact path="/" element={<EmptyPage />} />
+                        <Route exact path="*" element={<ErrorPage />} />
+                    </Routes>
+                </NavbarContext.Provider>
             </div>
         </BrowserRouter>
     );
