@@ -51,7 +51,7 @@ function Navbar(props) {
                             </>
                         ) : (
                             <>
-                                {loggedInLinks.map((loginLink, index) => {
+                                {notLoggedInLinks.map((loginLink, index) => {
                                     return (
                                         <li className="nav-item" key={index}>
                                             <Link
