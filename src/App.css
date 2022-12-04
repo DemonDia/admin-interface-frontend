@@ -51,7 +51,7 @@ label {
   border-radius: 10px 10px 0 0;
 }
 
-.authFormContainer {
+.authFormContainer,.profileContainer {
   padding: 10px;
 
 }
@@ -133,4 +133,9 @@ label {
 /* empty row msg */
 .emptyMsg{
   padding:20px;
+}
+
+/* profile page */
+.profileContainer{
+  
 }

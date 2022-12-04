@@ -29,10 +29,12 @@ import ProjectList from "./pages/projects/ProjectList";
 import EmailVerificationPage from "./pages/Users/EmailVerificationPage";
 import SendResetPasswordRequest from "./pages/Users/SendResetPasswordRequest";
 import PasswordResetForm from "./pages/Users/PasswordResetForm";
+import UserProfilePage from "./pages/Users/UserProfilePage";
 
 // ===========================redirect routes===========================
 import EmptyPage from "./pages/Redirect pages/EmptyPage";
 import ErrorPage from "./pages/Redirect pages/ErrorPage";
+
 function App() {
     return (
         <BrowserRouter>
@@ -42,7 +44,6 @@ function App() {
                     <Route exact path="/login" element={<Login />} />
                     <Route exact path="/register" element={<Register />} />
                     <Route exact path="/logout" element={<LogoutPage />} />
-
 
                     {/* ===========================home/main menu=========================== */}
                     <Route exact path="/home" element={<Home />} />
@@ -99,13 +100,10 @@ function App() {
                         path="/resetpass/:userId/:token"
                         element={<PasswordResetForm />}
                     />
+                    <Route exact path="/user" element={<UserProfilePage />} />
 
                     {/* ===========================redirect routes=========================== */}
-                    <Route
-                        exact
-                        path="/"
-                        element={<EmptyPage />}
-                    />
+                    <Route exact path="/" element={<EmptyPage />} />
                     <Route exact path="*" element={<ErrorPage />} />
                 </Routes>
             </div>
