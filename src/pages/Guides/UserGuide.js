@@ -36,6 +36,56 @@ function UserGuide(props) {
             ],
         },
         {
+            entityName: "Project",
+            entityDescription: "The project that you worked on",
+            attributes: [
+                {
+                    attributeName: "projectName",
+                    attributeType: "string",
+                    attributeDesc: "THe name of the project you worked on",
+                },
+                {
+                    attributeName: "year",
+                    attributeType: "integer",
+                    attributeDesc:
+                        "THe year in which you worked on the project",
+                },
+                {
+                    attributeName: "description",
+                    attributeType: "array (it contains strings only)",
+                    attributeDesc:
+                        "The description of your project in point form",
+                },
+                {
+                    attributeName: "links",
+                    attributeType:
+                        "array (it contains objects with the following format: {projectLinkName:string,projectLinkUrl:string})",
+                    attributeDesc:
+                        "The url links related to your project and their respective labels.  projectLinkName: the name of the project link; projectLinkUrl: the URL of that project link;",
+                },
+                {
+                    attributeName: "components",
+                    attributeType:
+                        "array (it contains objects with the following format: {componentName:string,componentLink:string})",
+                    attributeDesc:
+                        "The components and the links in which they are deployed.  componentName: the name of the project component; componentLink: the link of that deployed component;",
+                },
+            ],
+        },
+        {
+            entityName: "Experience",
+            entityDescription: "Your job/school experience (ie: cca, internship, etc)",
+            attributes:[
+                {attributeName:"roleName",attributType:"string",attributeDesc:"The name of the position/role you held during the experience"},
+                {attributeName:"companyName",attributType:"string",attributeDesc:"The name of the company/organisation you worked with"},
+                {attributeName:"companySite",attributType:"string",attributeDesc:"The official website of the company/organisation you worked with (if any)"},
+                {attributeName:"starting",attributType:"string",attributeDesc:"The starting date of the experience [Month Year]"},
+                {attributeName:"ending",attributType:"string",attributeDesc:"The end date of the experience [Month Year]"},
+                {attributeName:"details",attributType:"array (stores string)",attributeDesc:"The details of your experience in point form"},
+
+            ]
+        },
+        {
             entityName: "Contact",
             entityDescription: "How you will be contacted",
             attributes: [
