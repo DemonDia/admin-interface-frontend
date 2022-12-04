@@ -3,12 +3,13 @@ import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import { defaultAuthCheck } from "../../AuthCheck";
 import { PencilIcon, TrashIcon } from "../../components/general/icons";
+import Loader from "../../components/general/Loader";
 function ExperienceList(props) {
     const navigate = useNavigate();
     const [loading, isLoading] = useState(true);
     const [experiences, setExperience] = useState([]);
     const currentToken = localStorage.getItem("loginToken");
-    const [userId,setUserId] = useState("")
+    const [userId, setUserId] = useState("");
 
     // search as you type
     const [search, setSearch] = useState("");
@@ -41,7 +42,7 @@ function ExperienceList(props) {
                 {
                     headers: { Authorization: `Bearer ${currentToken}` },
                     data: {
-                        userId
+                        userId,
                     },
                 }
             )
@@ -129,7 +130,9 @@ function ExperienceList(props) {
                     </div>
                 </div>
                 {loading ? (
-                    <></>
+                    <>
+                        <Loader />
+                    </>
                 ) : (
                     <div className="tableContainer card">
                         <table className="table">

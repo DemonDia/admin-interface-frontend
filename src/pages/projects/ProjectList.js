@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import { defaultAuthCheck } from "../../AuthCheck";
 import { PencilIcon, TrashIcon } from "../../components/general/icons";
+import Loader from "../../components/general/Loader";
 function ProjectList(props) {
     const navigate = useNavigate();
     const [loading, isLoading] = useState(true);
@@ -28,7 +29,7 @@ function ProjectList(props) {
                 {
                     headers: { Authorization: `Bearer ${currentToken}` },
                     data: {
-                        userId
+                        userId,
                     },
                 }
             )
@@ -122,11 +123,7 @@ function ProjectList(props) {
 
                             {availableYears ? (
                                 availableYears.reverse().map((year) => {
-                                    return (
-                                        <option value={year}>
-                                            {year}
-                                        </option>
-                                    );
+                                    return <option value={year}>{year}</option>;
                                 })
                             ) : (
                                 <></>
@@ -159,7 +156,9 @@ function ProjectList(props) {
                 </div>
             </div>
             {loading ? (
-                <></>
+                <>
+                    <Loader />
+                </>
             ) : (
                 <div className="tableContainer card">
                     <table className="table">

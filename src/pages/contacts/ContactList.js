@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import { defaultAuthCheck } from "../../AuthCheck";
 import ContactRow from "../../components/contacts/ContactRow";
+import Loader from "../../components/general/Loader";
 function ContactList(props) {
     const navigate = useNavigate();
     const [loading, isLoading] = useState(true);
@@ -24,7 +25,7 @@ function ContactList(props) {
         await defaultAuthCheck(navigate, axios).then(async (result) => {
             if (result.data.success) {
                 await getContacts(result.data.id);
-                setUserId(result.data.id)
+                setUserId(result.data.id);
             }
         });
     };
@@ -53,7 +54,7 @@ function ContactList(props) {
                 {
                     contactName,
                     contactInfo,
-                    userId
+                    userId,
                 },
                 {
                     headers: {
@@ -122,7 +123,11 @@ function ContactList(props) {
                 </div>
             </div>
             {loading ? (
-                <></>
+                <>
+                    <>
+                        <Loader />
+                    </>
+                </>
             ) : (
                 <div className="tableContainer card">
                     <table className="table">
