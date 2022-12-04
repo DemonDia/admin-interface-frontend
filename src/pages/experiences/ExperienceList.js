@@ -61,7 +61,7 @@ function ExperienceList(props) {
     };
 
     const loadPage = async () => {
-        await defaultAuthCheck(navigate, axios).then(async (result) => {
+        await defaultAuthCheck(navigate).then(async (result) => {
             if (result.data.success) {
                 await getExperiences(result.data.id);
                 setUserId(result.data.id);

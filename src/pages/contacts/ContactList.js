@@ -23,7 +23,7 @@ function ContactList(props) {
     const [sortBy, setSortBy] = useState(0);
 
     const loadPage = async () => {
-        await defaultAuthCheck(navigate, axios).then(async (result) => {
+        await defaultAuthCheck(navigate).then(async (result) => {
             if (result.data.success) {
                 await getContacts(result.data.id);
                 setUserId(result.data.id);

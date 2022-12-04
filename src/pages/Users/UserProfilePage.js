@@ -15,7 +15,7 @@ function UserProfilePage(props) {
     const [phoneNumber, setPhoneNumber] = useState("");
     const [displayId, setDisplayId] = useState(false);
     const loadPage = async () => {
-        await defaultAuthCheck(navigate, axios).then(async (result) => {
+        await defaultAuthCheck(navigate).then(async (result) => {
             if (result.data.success) {
                 // await getExperiences(result.data.id);
                 console.log(result.data);

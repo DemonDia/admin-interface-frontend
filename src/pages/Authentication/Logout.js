@@ -5,7 +5,7 @@ import { defaultAuthCheck } from "../../AuthCheck";
 function LogoutPage(props) {
     const navigate = useNavigate();
     useEffect(() => {
-        defaultAuthCheck(navigate, axios);
+        defaultAuthCheck(navigate);
         // remove localstorage items
         localStorage.clear();
         navigate("/login");

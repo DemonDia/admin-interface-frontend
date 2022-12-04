@@ -6,7 +6,7 @@ import OptionContainer from "../components/general/OptionContainer";
 function Home(props) {
     const navigate = useNavigate();
     useEffect(() => {
-        defaultAuthCheck(navigate, axios);
+        defaultAuthCheck(navigate);
     }, []);
     const menuOptions = [
         {

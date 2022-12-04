@@ -48,7 +48,7 @@ function EditProject(props) {
             .catch((err) => {});
     };
     const loadPage = async () => {
-        await defaultAuthCheck(navigate, axios).then(async (result) => {
+        await defaultAuthCheck(navigate).then(async (result) => {
             if (result.data.success) {
                 setUserId(result.data.id);
                 await getCurrentProject();
