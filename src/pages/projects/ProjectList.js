@@ -28,7 +28,7 @@ function ProjectList(props) {
                 {
                     headers: { Authorization: `Bearer ${currentToken}` },
                     data: {
-                        userId: localStorage.getItem("userId"),
+                        userId
                     },
                 }
             )
