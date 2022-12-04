@@ -8,7 +8,7 @@ function ProjectList(props) {
     const [loading, isLoading] = useState(true);
     const [projects, setProjects] = useState([]);
     const currentToken = localStorage.getItem("loginToken");
-    const userId = localStorage.getItem("userId");
+    const [userId,setUserId] = useState("")
 
     // search as you type
     const [search, setSearch] = useState("");
@@ -35,7 +35,7 @@ function ProjectList(props) {
             .then((res) => {
                 if (res.data.success) {
                     alert("Successfully deleted");
-                    getProjects();
+                    getProjects(userId);
                 } else {
                     alert("Failed to delete");
                 }
@@ -45,7 +45,7 @@ function ProjectList(props) {
             });
     };
 
-    const getProjects = async () => {
+    const getProjects = async (userId) => {
         axios
             .get(
                 process.env.REACT_APP_BACKEND_API + `/api/projects/${userId}`,
@@ -64,7 +64,6 @@ function ProjectList(props) {
                             allAvailableYears.push(project.year);
                         }
                     });
-                    console.log(fetchedProjects);
                     setAvailableYears(allAvailableYears);
                     setProjects(fetchedProjects);
                     isLoading(false);
@@ -72,11 +71,19 @@ function ProjectList(props) {
             })
             .catch((err) => {});
     };
+    const loadPage = async () => {
+        await defaultAuthCheck(navigate, axios).then(async (result) => {
+            if (result.data.success) {
+                await getProjects(result.data.id);
+                setUserId(result.data.id);
+            }
+        });
+    };
 
     useEffect(() => {
-        defaultAuthCheck(navigate, axios);
-        getProjects();
+        loadPage();
     }, []);
+
     return (
         <div className="page">
             <h1>Projects</h1>

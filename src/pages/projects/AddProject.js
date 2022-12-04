@@ -6,7 +6,7 @@ import axios from "axios";
 function AddProject(props) {
     const navigate = useNavigate();
     const currentToken = localStorage.getItem("loginToken");
-    const userId = localStorage.getItem("userId");
+    const [userId,setUserId] = useState("")
 
     const addUserProject = async (project) => {
         await axios
@@ -30,8 +30,16 @@ function AddProject(props) {
                 alert("Failed to add");
             });
     };
+    const loadPage = async () => {
+        await defaultAuthCheck(navigate, axios).then(async (result) => {
+            if (result.data.success) {
+                setUserId(result.data.id);
+            }
+        });
+    };
+
     useEffect(() => {
-        defaultAuthCheck(navigate, axios);
+        loadPage()
     }, []);
     return (
         <div>
