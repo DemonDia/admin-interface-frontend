@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useContext } from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import { defaultAuthCheck } from "../../AuthCheck";
 import { PencilIcon, TrashIcon } from "../../components/general/icons";
 import EmptyContentRow from "../../components/general/tables/EmptyContentRow";
 import Loader from "../../components/general/Loader";
+import { NavbarContext } from "../../context/NavbarContext";
 function ProjectList(props) {
+    const { setLoggedIn,loggedIn } = useContext(NavbarContext);
     const navigate = useNavigate();
     const [loading, isLoading] = useState(true);
     const [projects, setProjects] = useState([]);
@@ -76,8 +78,10 @@ function ProjectList(props) {
     const loadPage = async () => {
         await defaultAuthCheck(navigate).then(async (result) => {
             if (result.data.success) {
-                await getProjects(result.data.id);
                 setUserId(result.data.id);
+                setLoggedIn(true)
+                await getProjects(result.data.id);
+                
             }
         });
     };

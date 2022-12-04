@@ -1,10 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useContext } from "react";
 import ProjectForm from "../../components/projects/ProjectForm";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { defaultAuthCheck } from "../../AuthCheck";
 import axios from "axios";
 import Loader from "../../components/general/Loader";
+import { NavbarContext } from "../../context/NavbarContext";
+
 function EditProject(props) {
+    const { setLoggedIn,loggedIn } = useContext(NavbarContext);
+
     const { projectId } = useParams();
     const navigate = useNavigate();
     const currentToken = localStorage.getItem("loginToken");
@@ -51,6 +55,7 @@ function EditProject(props) {
         await defaultAuthCheck(navigate).then(async (result) => {
             if (result.data.success) {
                 setUserId(result.data.id);
+                setLoggedIn(true)
                 await getCurrentProject();
             }
         });
