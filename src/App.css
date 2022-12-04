@@ -33,7 +33,7 @@ label {
 }
 
 /* authentication */
-.authForm {
+.authForm,.messageContainer {
   width: 60vh;
   margin: 20px auto;
   display: block;
@@ -148,4 +148,9 @@ label {
 .navbar-brand,
 .nav-link{
   color: white;
+}
+
+/* for verify email and forget password */
+.messageContainer{
+  padding:20px;
 }

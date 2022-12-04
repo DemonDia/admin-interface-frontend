@@ -32,7 +32,7 @@ function EmailVerificationPage(props) {
     // if verified, show OK
     // if already verified, show error
     return (
-        <>
+        <div className="card messageContainer">
             {!verified && !verificationFailed ? (
                 <h1>Verifying</h1>
             ) : (
@@ -40,11 +40,11 @@ function EmailVerificationPage(props) {
                     {verified && !verificationFailed ? (
                         <h1>Verified!</h1>
                     ) : (
-                        <h1>Fail to verify</h1>
+                        <h1>Failed to verify</h1>
                     )}
                 </>
             )}
-        </>
+        </div>
     );
 }
 
