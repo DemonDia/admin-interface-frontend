@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 
@@ -42,12 +42,16 @@ import { NavbarContext } from "./context/NavbarContext";
 
 // ===========================navbar===========================
 function App() {
-    const [loggedIn,isLoggedIn] = useState(false)
+    const [loggedIn,setLoggedIn] = useState(false)
+    useEffect(()=>{
+        console.log("Logged in",loggedIn)
+    },[loggedIn])
+    
     return (
         <BrowserRouter>
             <div className="App">
-                <NavbarContext.Provider value={{ loggedIn,isLoggedIn }}>
-                    <Navbar />
+                <NavbarContext.Provider value={{ loggedIn,setLoggedIn }}>
+                    <Navbar loggedIn = {loggedIn}/>
                     <Routes>
                         {/* ===========================authentication=========================== */}
                         <Route exact path="/login" element={<Login />} />

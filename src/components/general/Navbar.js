@@ -1,6 +1,5 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { NavbarContext } from "../../context/NavbarContext";
 function Navbar(props) {
     const loggedInLinks = [
         { link: "/home", linkName: "Home" },
@@ -11,7 +10,11 @@ function Navbar(props) {
         { link: "/user", linkName: "Profile" },
         { link: "/logout", linkName: "Logout" },
     ];
-    const { loggedIn } = useContext(NavbarContext);
+
+    const notLoggedInLinks = [
+        { link: "/login", linkName: "Login" },
+        { link: "/register", linkName: "Register" },
+    ];
     return (
         <nav class="navbar navbar-expand-lg bg-light fixed-top">
             <div class="container-fluid">
@@ -21,9 +24,8 @@ function Navbar(props) {
 
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
-                        {loggedIn ? (
+                        {props.loggedIn ? (
                             <>
-                                {" "}
                                 {loggedInLinks.map((loginLink, index) => {
                                     return (
                                         <li class="nav-item" key={index}>
@@ -38,7 +40,18 @@ function Navbar(props) {
                                 })}
                             </>
                         ) : (
-                            <></>
+                            <>{notLoggedInLinks.map((loginLink, index) => {
+                                return (
+                                    <li class="nav-item" key={index}>
+                                        <Link
+                                            className="nav-link"
+                                            to={loginLink.link}
+                                        >
+                                            {loginLink.linkName}
+                                        </Link>
+                                    </li>
+                                );
+                            })}</>
                         )}
                     </ul>
                 </div>

@@ -1,12 +1,20 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import { defaultAuthCheck } from "../AuthCheck";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import { NavbarContext } from "../context/NavbarContext";
 import OptionContainer from "../components/general/OptionContainer";
 function Home(props) {
+    const { setLoggedIn,loggedIn } = useContext(NavbarContext);
     const navigate = useNavigate();
+    const loadPage = async () => {
+        await defaultAuthCheck(navigate).then((result) => {
+            if (result.data.success) {
+                setLoggedIn(true);
+            }
+        });
+    };
     useEffect(() => {
-        defaultAuthCheck(navigate);
+        loadPage();
     }, []);
     const menuOptions = [
         {
