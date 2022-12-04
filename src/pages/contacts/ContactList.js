@@ -4,6 +4,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { defaultAuthCheck } from "../../AuthCheck";
 import ContactRow from "../../components/contacts/ContactRow";
 import Loader from "../../components/general/Loader";
+import EmptyContentRow from "../../components/general/tables/EmptyContentRow";
 function ContactList(props) {
     const navigate = useNavigate();
     const [loading, isLoading] = useState(true);
@@ -174,7 +175,7 @@ function ContactList(props) {
                                     </Link>
                                 </td>
                             </tr>
-                            {contacts ? (
+                            {contacts.length > 0 ? (
                                 <>
                                     {contacts
                                         .filter((contact) =>
@@ -205,7 +206,12 @@ function ContactList(props) {
                                         })}
                                 </>
                             ) : (
-                                <></>
+                                <>
+                                    <EmptyContentRow
+                                        colSpan={4}
+                                        item={"contacts"}
+                                    />
+                                </>
                             )}
                         </tbody>
                     </table>

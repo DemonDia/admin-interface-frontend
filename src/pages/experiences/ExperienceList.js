@@ -4,6 +4,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { defaultAuthCheck } from "../../AuthCheck";
 import { PencilIcon, TrashIcon } from "../../components/general/icons";
 import Loader from "../../components/general/Loader";
+import EmptyContentRow from "../../components/general/tables/EmptyContentRow";
 function ExperienceList(props) {
     const navigate = useNavigate();
     const [loading, isLoading] = useState(true);
@@ -147,7 +148,7 @@ function ExperienceList(props) {
                                 </tr>
                             </thead>
                             <tbody>
-                                {experiences ? (
+                                {experiences.length > 0 ? (
                                     <>
                                         {experiences
                                             .filter((experience) =>
@@ -213,7 +214,12 @@ function ExperienceList(props) {
                                             })}
                                     </>
                                 ) : (
-                                    <></>
+                                    <>
+                                        <EmptyContentRow
+                                            colSpan={4}
+                                            item={"experiences"}
+                                        />
+                                    </>
                                 )}
                             </tbody>
                         </table>

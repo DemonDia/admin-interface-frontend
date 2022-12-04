@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import { defaultAuthCheck } from "../../AuthCheck";
 import { PencilIcon, TrashIcon } from "../../components/general/icons";
+import EmptyContentRow from "../../components/general/tables/EmptyContentRow";
 import Loader from "../../components/general/Loader";
 function ProjectList(props) {
     const navigate = useNavigate();
@@ -172,7 +173,7 @@ function ProjectList(props) {
                             </tr>
                         </thead>
                         <tbody>
-                            {projects ? (
+                            {projects.length > 0 ? (
                                 <>
                                     {projects
                                         .filter(
@@ -230,7 +231,12 @@ function ProjectList(props) {
                                         })}
                                 </>
                             ) : (
-                                <></>
+                                <>
+                                    <EmptyContentRow
+                                        colSpan={4}
+                                        item={"Projects"}
+                                    />
+                                </>
                             )}
                         </tbody>
                     </table>

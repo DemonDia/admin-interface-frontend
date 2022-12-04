@@ -129,3 +129,8 @@ label {
   justify-content: center;
   align-items: center;
 }
+
+/* empty row msg */
+.emptyMsg{
+  padding:20px;
+}
