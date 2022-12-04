@@ -32,6 +32,9 @@ import SendResetPasswordRequest from "./pages/Users/SendResetPasswordRequest";
 import PasswordResetForm from "./pages/Users/PasswordResetForm";
 import UserProfilePage from "./pages/Users/UserProfilePage";
 
+// ===========================guides===========================
+import UserGuide from "./pages/Guides/UserGuide";
+
 // ===========================redirect routes===========================
 import EmptyPage from "./pages/Redirect pages/EmptyPage";
 import ErrorPage from "./pages/Redirect pages/ErrorPage";
@@ -138,6 +141,11 @@ function App() {
                                 exact
                                 path="/user"
                                 element={<UserProfilePage />}
+                            />
+                            <Route
+                                exact
+                                path="/guide"
+                                element={<UserGuide />}
                             />
 
                             {/* ===========================redirect routes=========================== */}

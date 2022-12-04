@@ -55,9 +55,15 @@ function Home(props) {
             color: "white",
         },
         {
+            page: "guide",
+            pageName: "User Guides",
+            background: "#3C4FF8",
+            color: "white",
+        },
+        {
             page: "logout",
             pageName: "Logout",
-            background: "#374BFC",
+            background: "rgb(35 54 225)",
             color: "white",
         },
     ];
