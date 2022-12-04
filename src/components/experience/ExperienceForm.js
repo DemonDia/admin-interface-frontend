@@ -159,7 +159,11 @@ function ExperienceForm(props) {
                         value={startMonth}
                     >
                         {monthsDict.map((month, number) => {
-                            return <option value={number}>{month}</option>;
+                            return (
+                                <option key={number} value={number}>
+                                    {month}
+                                </option>
+                            );
                         })}
                     </select>
                 </div>
@@ -183,7 +187,11 @@ function ExperienceForm(props) {
                         value={endMonth}
                     >
                         {monthsDict.map((month, number) => {
-                            return <option value={number}>{month}</option>;
+                            return (
+                                <option key={number} value={number}>
+                                    {month}
+                                </option>
+                            );
                         })}
                     </select>
                 </div>

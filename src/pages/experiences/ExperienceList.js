@@ -2,14 +2,13 @@ import React, { useEffect, ueState, useState } from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import { defaultAuthCheck } from "../../AuthCheck";
-import ExperienceForm from "../../components/experience/ExperienceForm";
 import { PencilIcon, TrashIcon } from "../../components/general/icons";
 function ExperienceList(props) {
     const navigate = useNavigate();
     const [loading, isLoading] = useState(true);
     const [experiences, setExperience] = useState([]);
     const currentToken = localStorage.getItem("loginToken");
-    const userId = localStorage.getItem("userId");
+    const [userId,setUserId] = useState("")
 
     // search as you type
     const [search, setSearch] = useState("");
@@ -17,7 +16,7 @@ function ExperienceList(props) {
     // in A-Z or Z-A
     const [sortBy, setSortBy] = useState(0);
 
-    const getExperiences = async () => {
+    const getExperiences = async (userId) => {
         axios
             .get(
                 process.env.REACT_APP_BACKEND_API + `/api/experience/${userId}`,
@@ -42,14 +41,14 @@ function ExperienceList(props) {
                 {
                     headers: { Authorization: `Bearer ${currentToken}` },
                     data: {
-                        userId: localStorage.getItem("userId"),
+                        userId
                     },
                 }
             )
             .then((res) => {
                 if (res.data.success) {
                     alert("Successfully deleted");
-                    getExperiences();
+                    getExperiences(userId);
                 } else {
                     alert("Failed to delete");
                 }
@@ -59,9 +58,17 @@ function ExperienceList(props) {
             });
     };
 
+    const loadPage = async () => {
+        await defaultAuthCheck(navigate, axios).then(async (result) => {
+            if (result.data.success) {
+                await getExperiences(result.data.id);
+                setUserId(result.data.id);
+            }
+        });
+    };
+
     useEffect(() => {
-        defaultAuthCheck(navigate, axios);
-        getExperiences();
+        loadPage();
     }, []);
     return (
         <div>

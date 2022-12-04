@@ -6,7 +6,7 @@ import axios from "axios";
 function AddExperience(props) {
     const navigate = useNavigate();
     const currentToken = localStorage.getItem("loginToken");
-    const userId = localStorage.getItem("userId");
+    const [userId,setUserId] = useState("")
 
     const addUserExperience = async (experience) => {
         await axios
@@ -30,9 +30,16 @@ function AddExperience(props) {
                 alert("Failed to add");
             });
     };
+    const loadPage = async () => {
+        await defaultAuthCheck(navigate, axios).then(async (result) => {
+            if (result.data.success) {
+                setUserId(result.data.id);
+            }
+        });
+    };
 
     useEffect(() => {
-        defaultAuthCheck(navigate, axios);
+        loadPage()
     }, []);
     return (
         <div>
