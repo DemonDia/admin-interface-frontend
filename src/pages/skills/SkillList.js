@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import { defaultAuthCheck } from "../../AuthCheck";
 import SkillRow from "../../components/skills/SkillRow";
 import Loader from "../../components/general/Loader";
 import EmptyContentRow from "../../components/general/tables/EmptyContentRow";
+import { NavbarContext } from "../../context/NavbarContext";
 function SkillList(props) {
+    const { setLoggedIn, loggedIn } = useContext(NavbarContext);
     const navigate = useNavigate();
     const [loading, isLoading] = useState(true);
     const [skills, setSkills] = useState([]);
@@ -82,8 +84,9 @@ function SkillList(props) {
     const loadPage = async () => {
         await defaultAuthCheck(navigate).then(async (result) => {
             if (result.data.success) {
-                await getSkills(result.data.id);
                 setUserId(result.data.id);
+                setLoggedIn(true);
+                await getSkills(result.data.id);
             }
         });
     };
@@ -202,7 +205,7 @@ function SkillList(props) {
                                     </Link>
                                 </td>
                             </tr>
-                            {skills.length >0 ? (
+                            {skills.length > 0 ? (
                                 <>
                                     {skills
                                         .filter(

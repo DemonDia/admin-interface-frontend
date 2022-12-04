@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { defaultAuthCheck } from "../../AuthCheck";
 import { Link, useNavigate } from "react-router-dom";
 import {
@@ -6,8 +6,10 @@ import {
     MaskIcon,
     CopyToClipbaord,
 } from "../../components/general/icons";
-import axios from "axios";
+import { NavbarContext } from "../../context/NavbarContext";
 function UserProfilePage(props) {
+    const { setLoggedIn, loggedIn } = useContext(NavbarContext);
+
     const navigate = useNavigate();
     const [userId, setUserId] = useState("");
     const [userName, setUserName] = useState("");
@@ -17,8 +19,7 @@ function UserProfilePage(props) {
     const loadPage = async () => {
         await defaultAuthCheck(navigate).then(async (result) => {
             if (result.data.success) {
-                // await getExperiences(result.data.id);
-                console.log(result.data);
+                setLoggedIn(true)
                 setUserId(result.data.id);
                 setUserName(result.data.username);
                 setEmail(result.data.email);

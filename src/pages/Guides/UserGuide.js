@@ -1,12 +1,18 @@
-import React, { useEffect } from "react";
+import React, { useEffect,useContext } from "react";
 import { Link } from "react-router-dom";
 import { CopyToClipbaord } from "../../components/general/icons";
 import { useNavigate } from "react-router-dom";
 import { defaultAuthCheck } from "../../AuthCheck";
+import { NavbarContext } from "../../context/NavbarContext";
 function UserGuide(props) {
+    const { setLoggedIn,loggedIn } = useContext(NavbarContext);
     const navigate = useNavigate();
     const loadPage = async () => {
-        await defaultAuthCheck(navigate);
+        await defaultAuthCheck(navigate).then(res=>{
+            if(res.data.success){
+                setLoggedIn(true)
+            }
+        });
     };
 
     useEffect(() => {
