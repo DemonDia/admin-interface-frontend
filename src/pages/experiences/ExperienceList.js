@@ -119,7 +119,7 @@ function ExperienceList(props) {
                                 <option value="2">Z-A</option>
                             </select>
                         </div>
-                        <div className="col" style={{ padding: "10px" }}>
+                        <div className="col">
                             <Link
                                 type="button"
                                 className="btn btn-primary createBtn"
