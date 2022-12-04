@@ -16,7 +16,7 @@ function Navbar(props) {
         { link: "/register", linkName: "Register" },
     ];
     return (
-        <nav className="navbar navbar-expand-lg bg-light fixed-top">
+        <nav className="navbar navbar-expand-lg mainNav navbar-dark fixed-top">
             <div className="container-fluid">
                 <Link className="navbar-brand" to="/">
                     Admin.io

@@ -52,7 +52,8 @@ label {
   border-radius: 10px 10px 0 0;
 }
 
-.authFormContainer,.profileContainer {
+.authFormContainer,
+.profileContainer {
   padding: 10px;
 
 }
@@ -132,11 +133,19 @@ label {
 }
 
 /* empty row msg */
-.emptyMsg{
-  padding:20px;
+.emptyMsg {
+  padding: 20px;
 }
 
 /* profile page */
-.profileContainer{
+.profileContainer {}
 
+/* navbar */
+.mainNav {
+  background: #5762cc;
+}
+
+.navbar-brand,
+.nav-link{
+  color: white;
 }
