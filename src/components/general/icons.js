@@ -65,7 +65,7 @@ function UnmaskIcon() {
             width="16"
             height="100%"
             fill="currentColor"
-            class="bi bi-eye-slash-fill"
+            className="bi bi-eye-slash-fill"
             viewBox="0 0 16 16"
         >
             <path d="m10.79 12.912-1.614-1.615a3.5 3.5 0 0 1-4.474-4.474l-2.06-2.06C.938 6.278 0 8 0 8s3 5.5 8 5.5a7.029 7.029 0 0 0 2.79-.588zM5.21 3.088A7.028 7.028 0 0 1 8 2.5c5 0 8 5.5 8 5.5s-.939 1.721-2.641 3.238l-2.062-2.062a3.5 3.5 0 0 0-4.474-4.474L5.21 3.089z" />
@@ -81,7 +81,7 @@ function MaskIcon() {
             width="16"
             height="100%"
             fill="currentColor"
-            class="bi bi-eye-fill"
+            className="bi bi-eye-fill"
             viewBox="0 0 16 16"
         >
             <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" />
@@ -97,7 +97,7 @@ function CopyToClipbaord() {
             width="16"
             height="16"
             fill="currentColor"
-            class="bi bi-clipboard"
+            className="bi bi-clipboard"
             viewBox="0 0 16 16"
         >
             <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />

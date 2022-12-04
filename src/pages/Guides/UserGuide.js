@@ -12,6 +12,12 @@ function UserGuide(props) {
     useEffect(() => {
         loadPage();
     }, []);
+    const routes = [
+        "/api/skills/:userId (Retrieves all your skills)",
+        "/api/projects/:userId (Retrieves all your projects)",
+        "/api/experience/:userId (Retrieves all your job/school experiences)",
+        "/api/contact/:userId (Retrieves all your contact information)",
+    ];
     return (
         <div className="page">
             <h1>User Guides</h1>
@@ -63,7 +69,7 @@ function UserGuide(props) {
                         id="v-pills-integrationGuide"
                         role="tabpanel"
                         aria-labelledby="v-pills-integrationGuide"
-                        tabindex="0"
+                        tabIndex="0"
                     >
                         <ol className="list-group list-group-numbered guideSteps">
                             <li className="list-group-item">
@@ -74,7 +80,7 @@ function UserGuide(props) {
                                 Save it as "USER_ID" in your .env file. (Add a
                                 "REACT_APP_" such that it is saved as
                                 "REACT_APP_USER_ID" if your site is created with
-                                React.js) You can find it in the profile page.
+                                React.js). You can find it in the profile page.
                             </li>
                             <li className="list-group-item">
                                 Save the link below as "SERVER" in your .env
@@ -113,7 +119,7 @@ function UserGuide(props) {
                             <li className="list-group-item">
                                 Remember to put the variables as mentioned into
                                 the environment variables on the services you
-                                use to deploy your portfolio sites!<br></br>
+                                use to deploy your portfolio sites!
                             </li>
                             <li className="list-group-item">
                                 Refer the API guide in the next tab and you are
@@ -126,9 +132,23 @@ function UserGuide(props) {
                         id="v-pills-apiGuide"
                         role="tabpanel"
                         aria-labelledby="v-pills-apiGuide"
-                        tabindex="0"
+                        tabIndex="0"
+                        style={{ textAlign: "left" }}
                     >
-                        ...
+                        <br></br>
+                        The API has the following routes <b>(NOTE: They are READ only)</b>:
+                        <br></br>
+                        <ul className="list-group guideSteps">
+                            {routes.map((route, index) => {
+                                return (
+                                    <li key={index} className="list-group-item">
+                                        {route}
+                                    </li>
+                                );
+                            })}
+                        </ul>
+                        <br></br><b>Note: userId refers to the userId that is inside your .env file (USER_ID or REACT_APP_USER_ID)</b>
+                        <br></br>Eg: to get skills from the API, it will be: `$&#123;process.env.SERVER&#125;/api/skills/$&#123;process.env.USER_ID&#125;`.
                     </div>
                 </div>
             </div>
