@@ -7,7 +7,7 @@ function EditExperience(props) {
     const { experienceId } = useParams();
     const navigate = useNavigate();
     const currentToken = localStorage.getItem("loginToken");
-    const userId = localStorage.getItem("userId");
+    const [userId, setUserId] = useState();
     const [experience, setExperience] = useState(null);
     const editUserExperience = async (experience) => {
         await axios
@@ -43,12 +43,17 @@ function EditExperience(props) {
                     setExperience(res.data.data);
                 }
             })
-            .catch((err) => {
-            });
+            .catch((err) => {});
     };
-
+    const loadPage = async () => {
+        await defaultAuthCheck(navigate, axios).then(async (result) => {
+            if (result.data.success) {
+                setUserId(result.data.id);
+            }
+        });
+    };
     useEffect(() => {
-        defaultAuthCheck(navigate, axios);
+        loadPage();
         getCurrentExperience();
     }, []);
     return (
