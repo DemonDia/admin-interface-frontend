@@ -18,6 +18,42 @@ function UserGuide(props) {
         "/api/experience/:userId (Retrieves all your job/school experiences)",
         "/api/contact/:userId (Retrieves all your contact information)",
     ];
+    const entities = [
+        {
+            entityName: "Skill",
+            entityDescription: "A skill that you have",
+            attributes: [
+                {
+                    attributeName: "skillName",
+                    attributeType: "string",
+                    attributeDesc: "The name of the skill",
+                },
+                {
+                    attributeName: "year",
+                    attributeType: "integer",
+                    attributeDesc: "The year which you picked up the skill",
+                },
+            ],
+        },
+        {
+            entityName: "Contact",
+            entityDescription: "How you will be contacted",
+            attributes: [
+                {
+                    attributeName: "contactName",
+                    attributeType: "string",
+                    attributeDesc:
+                        "The name of the mode to contact you (eg: Email, etc",
+                },
+                {
+                    attributeName: "contact",
+                    attributeType: "string",
+                    attributeDesc:
+                        "Contact information (eg: your email, linkedin profile link, etc)",
+                },
+            ],
+        },
+    ];
     return (
         <div className="page">
             <h1>User Guides</h1>
@@ -135,9 +171,10 @@ function UserGuide(props) {
                         tabIndex="0"
                         style={{ textAlign: "left" }}
                     >
+                        <h5>API Routes</h5>
                         <br></br>
-                        The API has the following routes <b>(NOTE: They are READ only)</b>:
-                        <br></br>
+                        The API has the following routes{" "}
+                        <b>(NOTE: They are READ only)</b>:<br></br>
                         <ul className="list-group guideSteps">
                             {routes.map((route, index) => {
                                 return (
@@ -147,8 +184,82 @@ function UserGuide(props) {
                                 );
                             })}
                         </ul>
-                        <br></br><b>Note: userId refers to the userId that is inside your .env file (USER_ID or REACT_APP_USER_ID)</b>
-                        <br></br>Eg: to get skills from the API, it will be: `$&#123;process.env.SERVER&#125;/api/skills/$&#123;process.env.USER_ID&#125;`.
+                        <br></br>
+                        <b>
+                            Note: userId refers to the userId that is inside
+                            your .env file (USER_ID or REACT_APP_USER_ID)
+                        </b>
+                        <br></br>Eg: to get skills from the API, it will be:
+                        `$&#123;process.env.SERVER&#125;/api/skills/$&#123;process.env.USER_ID&#125;`.
+                        <h5>API Entities</h5>
+                        <ul className="list-group guideSteps">
+                            {entities.map((entity, index) => {
+                                return (
+                                    <>
+                                        <li
+                                            className="list-group-item"
+                                            class="btn btn-primary"
+                                            data-bs-toggle="collapse"
+                                            href={
+                                                "#" +
+                                                entity.enntityName +
+                                                "" +
+                                                index
+                                            }
+                                            role="button"
+                                            aria-expanded="false"
+                                            aria-controls="collapseExample"
+                                            style={{
+                                                background: "#0011A7",
+                                                border: "0px",
+                                                marginTop: "10px",
+                                            }}
+                                        >
+                                            {entity.entityName}
+                                        </li>
+                                        <div
+                                            class="collapse"
+                                            id={entity.enntityName + "" + index}
+                                        >
+                                            <div class="card card-body">
+                                                Description:{" "}
+                                                {entity.entityDescription}
+                                                <br></br>
+                                                It has the following attributes:
+                                                <ul className="list-group guideSteps">
+                                                    {entity.attributes.map(
+                                                        (attribute, index) => {
+                                                            return (
+                                                                <li
+                                                                    key={index}
+                                                                    className="list-group-item"
+                                                                >
+                                                                    <h4>
+                                                                        {
+                                                                            attribute.attributeName
+                                                                        }
+                                                                    </h4>
+                                                                    Data type:{" "}
+                                                                    {
+                                                                        attribute.attributeType
+                                                                    }
+                                                                    <br></br>
+                                                                    Description:{" "}
+                                                                    {
+                                                                        attribute.attributeDesc
+                                                                    }
+                                                                    <br></br>
+                                                                </li>
+                                                            );
+                                                        }
+                                                    )}
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </>
+                                );
+                            })}
+                        </ul>
                     </div>
                 </div>
             </div>
