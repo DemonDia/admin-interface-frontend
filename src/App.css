@@ -172,6 +172,13 @@ label {
 
 }
 .resumeContentContainer{
-  margin:20px;
+  margin:5px;
+  padding:5px;
 
+}
+.resumeContentContainer h4{
+  text-align: left;
+}
+.itemPoint{
+  text-align: left;
 }
