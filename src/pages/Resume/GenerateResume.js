@@ -99,8 +99,8 @@ function GenerateResume(props) {
             doc.internal.pageSize.width || doc.internal.pageSize.getWidth();
 
         var currentVerticalPos = 10;
-        var currentHorizontalPos = 25;
-        doc.setFontSize(14);
+        var currentHorizontalPos = 5;
+        doc.setFontSize(17);
         doc.text(username, pageWidth / 2, currentVerticalPos, {
             align: "center",
         });
@@ -126,14 +126,14 @@ function GenerateResume(props) {
             currentVerticalPos += 5;
             doc.text(
                 `- ${skill}`,
-                currentHorizontalPos + 10,
+                currentHorizontalPos,
                 currentVerticalPos
             );
         });
         // ===========================Projects===========================
         // ========title=======
         currentVerticalPos += 10;
-        doc.setFontSize(15);
+        doc.setFontSize(17);
         doc.text("Projects", currentHorizontalPos, currentVerticalPos, {
             align: "left",
         });
@@ -145,7 +145,7 @@ function GenerateResume(props) {
             doc.setFontSize(13);
             doc.text(
                 `${project.projectName} (${project.year})`,
-                currentHorizontalPos + 10,
+                currentHorizontalPos,
                 currentVerticalPos
             );
             // project description
@@ -154,7 +154,7 @@ function GenerateResume(props) {
                 currentVerticalPos += 5;
                 doc.text(
                     `-${desc}`,
-                    currentHorizontalPos + 15,
+                    currentHorizontalPos + 2,
                     currentVerticalPos
                 );
             });
@@ -162,7 +162,7 @@ function GenerateResume(props) {
         // ===========================Projects===========================
         // ========title=======
         currentVerticalPos += 10;
-        doc.setFontSize(15);
+        doc.setFontSize(17);
         doc.text("Experiences", currentHorizontalPos, currentVerticalPos, {
             align: "left",
         });
@@ -174,7 +174,7 @@ function GenerateResume(props) {
             doc.setFontSize(13);
             doc.text(
                 `${experience.companyName} - ${experience.roleName} (${experience.starting} - ${experience.ending})`,
-                currentHorizontalPos + 10,
+                currentHorizontalPos,
                 currentVerticalPos
             );
             // project description
@@ -183,7 +183,7 @@ function GenerateResume(props) {
                 currentVerticalPos += 5;
                 doc.text(
                     `-${detailPoint}`,
-                    currentHorizontalPos + 15,
+                    currentHorizontalPos + 2,
                     currentVerticalPos
                 );
             });
