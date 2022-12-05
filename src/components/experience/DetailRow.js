@@ -6,8 +6,13 @@ function DetailRow(props) {
 
     const [detailPoint, setDetailPoint] = useState(props.detail);
     const saveChanges = () => {
-        props.saveChanges(detailPoint, props.index);
-        isEditing(false);
+        if(detailPoint.length > 100){
+            alert("Detail cannot exceed 100 characters")
+        }
+        else{
+            props.saveChanges(detailPoint, props.index);
+            isEditing(false);
+        }
     };
     return (
         <tr>

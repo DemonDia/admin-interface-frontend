@@ -4,10 +4,16 @@ import { PencilIcon, TrashIcon, SaveIcon, CancelIcon } from "../general/icons";
 function DescriptionRow(props) {
     const [editing, isEditing] = useState(false);
 
-    const [descriptionPoint, setDescriptionPoint] = useState(props.descriptionPoint);
+    const [descriptionPoint, setDescriptionPoint] = useState(
+        props.descriptionPoint
+    );
     const saveChanges = () => {
-        props.saveChanges(descriptionPoint, props.index);
-        isEditing(false);
+        if (descriptionPoint.length > 100) {
+            alert("Description cannot exceed 100 characters");
+        } else {
+            props.saveChanges(descriptionPoint, props.index);
+            isEditing(false);
+        }
     };
     return (
         <tr>

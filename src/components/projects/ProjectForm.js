@@ -16,7 +16,7 @@ function ProjectForm(props) {
             setProjectLinks(props.project.links);
             setProjectComponents(props.project.components);
         }
-    },[]);
+    }, []);
     // ========================main functions========================
     // ========== add ==========
     const addProject = async () => {
@@ -53,6 +53,8 @@ function ProjectForm(props) {
             alert("It exists");
         } else if (descriptionPoint == "") {
             alert("Description point cannot be empty");
+        } else if (descriptionPoint.length > 100) {
+            alert("Description cannot exceed 100 characters");
         } else {
             description.push(descriptionPoint);
             setDescription(description);
@@ -216,7 +218,7 @@ function ProjectForm(props) {
                             <tr>
                                 <td>
                                     <input
-                                        placeholder="Add description point"
+                                        placeholder="Add a short description (No more than 100 characters)"
                                         className="form-control"
                                         value={descriptionPoint}
                                         onChange={(e) =>

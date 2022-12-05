@@ -90,6 +90,8 @@ function ExperienceForm(props) {
             alert("It exists");
         } else if (detailPoint == "") {
             alert("Detail cannot be empty");
+        } else if (detailPoint.length > 100) {
+            alert("Details cannot exceed 100 characters");
         } else {
             details.push(detailPoint);
             setDetails(details);
@@ -209,7 +211,7 @@ function ExperienceForm(props) {
                             <tr>
                                 <td>
                                     <input
-                                        placeholder="Add Detail"
+                                        placeholder="Add a short detail (No more than 100 characters)"
                                         className="form-control"
                                         value={detailPoint}
                                         onChange={(e) =>
