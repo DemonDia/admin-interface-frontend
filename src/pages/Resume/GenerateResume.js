@@ -107,7 +107,7 @@ function GenerateResume(props) {
         const contacts = email + " | " + phoneNumber;
 
         currentVerticalPos += 5;
-        doc.setFontSize(9);
+        doc.setFontSize(12);
         doc.text(contacts, pageWidth / 2, currentVerticalPos, {
             align: "center",
         });
@@ -115,13 +115,13 @@ function GenerateResume(props) {
 
         // ========title=======
         currentVerticalPos += 15;
-        doc.setFontSize(15);
+        doc.setFontSize(17);
         doc.text("Skills", currentHorizontalPos, currentVerticalPos, {
             align: "left",
         });
         //  =======content=======
         doc.setFontSize(12);
-        currentVerticalPos += 5;
+        currentVerticalPos += 2;
         skills.map((skill) => {
             currentVerticalPos += 5;
             doc.text(
@@ -138,7 +138,7 @@ function GenerateResume(props) {
             align: "left",
         });
         //  =======content=======
-        currentVerticalPos += 5;
+        currentVerticalPos += 2;
         projects.map((project) => {
             // project title
             currentVerticalPos += 5;
@@ -167,7 +167,7 @@ function GenerateResume(props) {
             align: "left",
         });
         //  =======content=======
-        currentVerticalPos += 5;
+        currentVerticalPos += 2;
         experiences.map((experience) => {
             // project title
             currentVerticalPos += 5;
@@ -222,13 +222,13 @@ function GenerateResume(props) {
                         Resume
                     </li>
                     <li className="breadcrumb-item active" aria-current="page">
-                        <a
+                        <Link
                             onClick={() => {
                                 generateResume();
                             }}
                         >
                             Download Resume (Click to download)
-                        </a>
+                        </Link>
                     </li>
                 </ol>
             </nav>
