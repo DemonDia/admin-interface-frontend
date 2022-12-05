@@ -153,7 +153,7 @@ function GenerateResume(props) {
             project.description.map((desc) => {
                 currentVerticalPos += 5;
                 doc.text(
-                    `-${desc}`,
+                    `- ${desc}`,
                     currentHorizontalPos + 2,
                     currentVerticalPos
                 );
@@ -182,7 +182,7 @@ function GenerateResume(props) {
             experience.details.map((detailPoint) => {
                 currentVerticalPos += 5;
                 doc.text(
-                    `-${detailPoint}`,
+                    `- ${detailPoint}`,
                     currentHorizontalPos + 2,
                     currentVerticalPos
                 );
@@ -242,7 +242,6 @@ function GenerateResume(props) {
                             </>
                         ) : (
                             <>
-                                {" "}
                                 <h3>{username}</h3>
                                 {email} | {phoneNumber}
                             </>
