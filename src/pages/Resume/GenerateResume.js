@@ -79,6 +79,9 @@ function GenerateResume(props) {
                             details,
                         });
                     });
+                    experienceList.sort( (a, b) =>{
+                        return b.starting.localeCompare(a.starting);
+                    });
                     setExperiences(experienceList);
                 }
             });
