@@ -29,18 +29,26 @@ function GenerateResume(props) {
         });
     };
     const [projects, setProjects] = useState([]);
+
+
     const getProjects = async (userId) => {
         await axios.get(serverLink + "/api/projects/" + userId).then((res) => {
             if (res.data) {
+                // sort by year
                 var projectList = [];
                 res.data.data.map((project) => {
                     const { projectName, description, year } = project;
                     projectList.push({ projectName, description, year });
                 });
-                setProjects(res.data.data);
+                projectList.sort( (a, b) =>{
+                    return b.year.localeCompare(a.year);
+                });
+                setProjects(projectList);
             }
         });
     };
+
+
     const [experiences, setExperiences] = useState([]);
     const getExperiences = async (userId) => {
         await axios
