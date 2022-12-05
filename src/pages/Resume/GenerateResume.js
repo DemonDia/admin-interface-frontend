@@ -3,6 +3,7 @@ import { defaultAuthCheck } from "../../AuthCheck";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { NavbarContext } from "../../context/NavbarContext";
+import Loader from "../../components/general/Loader";
 function GenerateResume(props) {
     const serverLink = process.env.REACT_APP_BACKEND_API;
     const { setLoggedIn, loggedIn } = useContext(NavbarContext);
@@ -107,7 +108,7 @@ function GenerateResume(props) {
                 </ol>
             </nav>
             <div className="card resumeContainer">
-                <h2>Preview Resume Content</h2>
+                <h2> Resume Preview</h2>
                 <div className="card resumeContentContainer">
                     <h3>{username}</h3>
                     {email} | {phoneNumber}
@@ -117,7 +118,7 @@ function GenerateResume(props) {
                     <h4>Skills</h4>
                     {loading ? (
                         <>
-                            <h3>Loading...</h3>
+                            <Loader />
                         </>
                     ) : (
                         <ul>
@@ -135,7 +136,7 @@ function GenerateResume(props) {
                     <h4>Projects</h4>
                     {loading ? (
                         <>
-                            <h3>Loading...</h3>
+                            <Loader />
                         </>
                     ) : (
                         <>
@@ -167,7 +168,7 @@ function GenerateResume(props) {
                     <h4>Experiences</h4>
                     {loading ? (
                         <>
-                            <h3>Loading...</h3>
+                            <Loader />
                         </>
                     ) : (
                         <>
