@@ -1,70 +1,44 @@
-# Getting Started with Create React App
+# Admin Interface for Portfolio sites
+## Key features:
+* It allows you to control the content of your portfolio site without having to edit your portfolio site
+* Auto-generation of your resume based on your projects, skills and experiences
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Tech stacks:
+1. React.Js (Frontend)
+2. Node.Js (Backend)
+3. Express.Js (Backend)
+4. MongoDB (Database)
+5. Netlify (Frontend deployment)
+6. Vercel (Backend deployment)
+7. MongoDB Atlas (Database Deployment)
 
-## Available Scripts
+## Registration Steps:
+### 1. Sign up for an account as shown below: (go to https://user-portfolio-admin-interface.netlify.app/)
+<img width="1792" alt="image" src="https://user-images.githubusercontent.com/47315402/205669116-a2e169d9-17ba-441e-a034-efba82894161.png">
+Note: You do not have to put your actual phone number if you dont want to. The phone number is used for the auto generation of your resume
 
-In the project directory, you can run:
+### 2. Click on the link in the email verification as shown below: (do check your spam folders)
+<img width="862" alt="image" src="https://user-images.githubusercontent.com/47315402/205670854-709dd97c-b572-4837-8eba-74ad9b72c900.png">
 
-### `npm start`
+### 3. This should appear after clicking the link (You can start to login with your newly created account):
+<img width="674" alt="image" src="https://user-images.githubusercontent.com/47315402/205671305-3a6fd1b8-89e3-4d10-92ec-8ccf2f7ddbf0.png">
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 4. Login to your account and have fun customizing!
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Integration Steps: (To finally use this for your portfolio sites)
+### 1. After logging in, click 1)"Profile" on the top bar and then the 2)"Clipboard icon" to copy your unique user ID (NOTE: your User ID is unique to you and please do NOT share your User ID with other people)
+<img width="1433" alt="image" src="https://user-images.githubusercontent.com/47315402/205672985-b9728f17-b7b4-4efa-ad88-fe55ab31ee6d.png">
 
-### `npm test`
+### 2. Click on 1)"Guide" on the top bar and then 2)"Integration guide" 
+Note: Please also do check out the API guide to know how to use it.
+<img width="1542" alt="image" src="https://user-images.githubusercontent.com/47315402/205673621-a63d16b9-13e1-46f1-a05d-b313066470c9.png">
+### 3. Follow the steps as shown in the guide
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 4. If done correctly, your .env should look something like this:
+NOTE: add. "REACT_APP_" at the front of the name of your environment variable if your site is created using React.js
+<img width="413" alt="image" src="https://user-images.githubusercontent.com/47315402/205674102-2e70d04e-d1b7-4dd5-b985-d5bc23b74653.png">
 
-### `npm run build`
+### 5. This is how to use the endpoint::
+NOTE: This is done using react.js. It may differ depending on what you use.
+<img width="422" alt="image" src="https://user-images.githubusercontent.com/47315402/205674801-bec0542e-f2ad-4ef1-8bd2-83488c3721b6.png">
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
