@@ -30,7 +30,6 @@ function GenerateResume(props) {
     };
     const [projects, setProjects] = useState([]);
 
-
     const getProjects = async (userId) => {
         await axios.get(serverLink + "/api/projects/" + userId).then((res) => {
             if (res.data) {
@@ -40,14 +39,13 @@ function GenerateResume(props) {
                     const { projectName, description, year } = project;
                     projectList.push({ projectName, description, year });
                 });
-                projectList.sort( (a, b) =>{
+                projectList.sort((a, b) => {
                     return b.year.localeCompare(a.year);
                 });
                 setProjects(projectList);
             }
         });
     };
-
 
     const [experiences, setExperiences] = useState([]);
     const getExperiences = async (userId) => {
@@ -79,7 +77,7 @@ function GenerateResume(props) {
                             details,
                         });
                     });
-                    experienceList.sort( (a, b) =>{
+                    experienceList.sort((a, b) => {
                         return b.starting.localeCompare(a.starting);
                     });
                     setExperiences(experienceList);
@@ -105,6 +103,7 @@ function GenerateResume(props) {
         };
         loadPage();
     }, []);
+
     return (
         <div className="page">
             <h1>Generate Resume</h1>
@@ -116,13 +115,25 @@ function GenerateResume(props) {
                     <li className="breadcrumb-item active" aria-current="page">
                         Resume
                     </li>
+                    <li className="breadcrumb-item active" aria-current="page">
+                        <Link> Download Resume (Click to download)</Link>
+                    </li>
                 </ol>
             </nav>
             <div className="card resumeContainer">
                 <h2> Resume Preview</h2>
                 <div className="card resumeContentContainer">
-                    <h3>{username}</h3>
-                    {email} | {phoneNumber}
+                    {loading ? (
+                        <>
+                            <Loader />
+                        </>
+                    ) : (
+                        <>
+                            {" "}
+                            <h3>{username}</h3>
+                            {email} | {phoneNumber}
+                        </>
+                    )}
                 </div>
 
                 <div className="card resumeContentContainer">
