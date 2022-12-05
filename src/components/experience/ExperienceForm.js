@@ -74,12 +74,12 @@ function ExperienceForm(props) {
     };
     // ========================other functions========================
     const getMonthFromString = (mon) => {
-        return new Date(Date.parse(mon + " 1, 2012")).getMonth() + 1;
+        return new Date(Date.parse(mon + " 1, 2012")).getMonth();
     };
 
     const getMonthName = (monthNumber) => {
         const date = new Date();
-        date.setMonth(monthNumber - 1);
+        date.setMonth(monthNumber);
 
         return date.toLocaleString("en-US", { month: "long" });
     };
