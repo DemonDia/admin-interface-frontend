@@ -78,6 +78,8 @@ function UserProfilePage(props) {
                     }
                 )
                 .then((res) => {
+                    setNewPassword("");
+                    setConfirmNewPassword("");
                     alert("Password reset sucessfully.");
                 })
                 .catch((err) => {
@@ -85,7 +87,35 @@ function UserProfilePage(props) {
                 });
         }
     };
-    const deleteAccount = async () => {};
+    const deleteAccount = async () => {
+        var confirmDelete = prompt(
+            "Are you sure? Type 'yes' to proceed. ALL your records will be gone FOREVER. This is IRREVERSABLE!"
+        );
+        if (confirmDelete == "yes") {
+            await axios
+                .delete(
+                    process.env.REACT_APP_BACKEND_API +
+                        `/api/users/${userId}`,
+                    {
+                        headers: { Authorization: `Bearer ${token}` },
+                    }
+                )
+                .then((res) => {
+                    if (res.data.success) {
+                        alert("Account successfully deleted");
+                        navigate("/logout")
+                    } else {
+                        console.log(res.data)
+                        alert("Failed to delete");
+                    }
+                })
+                .catch((err) => {
+                    console.log(err)
+                    alert("Failed to delete");
+                });
+
+        }
+    };
 
     useEffect(() => {
         loadPage();

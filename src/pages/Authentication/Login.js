@@ -18,6 +18,7 @@ function Login(props) {
                     alert(res.data.message);
                 } else {
                     localStorage.setItem("loginToken", res.data.token);
+                    alert("Logged in")
                     navigate("/home");
                 }
             });
