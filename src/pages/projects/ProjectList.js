@@ -170,7 +170,7 @@ function ProjectList(props) {
                         <thead>
                             <tr>
                                 <th scope="col">Project Name</th>
-                                <th scope="col">Skill Year</th>
+                                <th scope="col">Project Year</th>
                                 <th scope="col" colSpan={2}>
                                     Actions
                                 </th>
