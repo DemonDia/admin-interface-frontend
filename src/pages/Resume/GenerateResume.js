@@ -54,43 +54,53 @@ function GenerateResume(props) {
             .get(serverLink + "/api/experience/" + userId)
             .then((res) => {
                 if (res.data.success) {
-                    var experienceList = [];
-                    res.data.data.map((experience) => {
-                        const {
-                            roleName,
-                            companyName,
-                            starting,
-                            ending,
-                            details,
-                        } = experience;
-                        experienceList.push({
-                            roleName,
-                            companyName,
-                            starting,
-                            ending,
-                            details,
-                        });
-                    });
-                    experienceList.sort((a, b) => {
-                        return b.starting.localeCompare(a.starting);
-                    });
+                    var experienceList = sortExperiences(res.data.data)
                     setExperiences(experienceList);
                 }
             });
     };
+    // sort experience
+    const sortExperiences = (experienceList) => {
+        const monthsDict = {
+            January: 0,
+            Feburary: 1,
+            March: 2,
+            April: 3,
+            May: 4,
+            June: 5,
+            July: 6,
+            August: 7,
+            September: 8,
+            October: 9,
+            November: 10,
+            December: 11,
+        };
+        const experiencesByYear = {};
+        // get by year and the get by month
+        experienceList.map((experience) => {
+            const [startMonth, startYear] = experience.starting.split(" ");
+            if (!(startYear in experiencesByYear)) {
+                experiencesByYear[startYear] = [];
+            }
+            var currentProjectYear = experiencesByYear[startYear];
+            currentProjectYear[monthsDict[startMonth]] = experience;
+        });
+        var reversedExperienceList = [];
+        const reversedYears = Object.keys(experiencesByYear).reverse();
+        console.log(reversedYears);
+        reversedYears.map((year) => {
+            const reversedMonths = Object.keys(
+                experiencesByYear[year]
+            ).reverse();
+            reversedMonths.map((month) => {
+                reversedExperienceList.push(experiencesByYear[year][month]);
+            });
+        });
+        console.log(reversedExperienceList);
+        return reversedExperienceList;
+    };
 
     // ==========================helper function==========================
-    const textAlignCenter = (doc, text) => {
-        return (
-            doc.internal.pageSize.width / 2 -
-            (doc.getStringUnitWidth(text) * doc.internal.getFontSize()) / 2
-        );
-    };
-    const drawLine = (doc, currentLine) => {
-        doc.setLineDash([10, 10], 0);
-        doc.line(20, 25, 60, 25);
-    };
-
     const generateResume = () => {
         var doc = jsPDF("portrait", "mm", "a4", "false");
         var pageHeight =
@@ -124,11 +134,7 @@ function GenerateResume(props) {
         currentVerticalPos += 2;
         skills.map((skill) => {
             currentVerticalPos += 5;
-            doc.text(
-                `- ${skill}`,
-                currentHorizontalPos,
-                currentVerticalPos
-            );
+            doc.text(`- ${skill}`, currentHorizontalPos, currentVerticalPos);
         });
         // ===========================Projects===========================
         // ========title=======
