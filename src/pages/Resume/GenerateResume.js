@@ -87,7 +87,6 @@ function GenerateResume(props) {
         });
         var reversedExperienceList = [];
         const reversedYears = Object.keys(experiencesByYear).reverse();
-        console.log(reversedYears);
         reversedYears.map((year) => {
             const reversedMonths = Object.keys(
                 experiencesByYear[year]
@@ -96,7 +95,6 @@ function GenerateResume(props) {
                 reversedExperienceList.push(experiencesByYear[year][month]);
             });
         });
-        console.log(reversedExperienceList);
         return reversedExperienceList;
     };
 
